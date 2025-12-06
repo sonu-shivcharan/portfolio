@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Github,
-  Linkedin,
   Mail,
   MapPin,
   ExternalLink,
@@ -9,6 +7,7 @@ import {
   Database,
   Layout,
   Server,
+  Paperclip,
 } from "lucide-react";
 
 // Assumes standard shadcn/ui folder structure
@@ -25,109 +24,37 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-// --- PORTFOLIO DATA (Extracted from Component) ---
-const PORTFOLIO_DATA = {
-  personalInfo: {
-    name: "Sonu Shivcharan", //
-    role: "Full-Stack Web Developer", //
-    contact: {
-      email: "sonushivcharan@outlook.com", //
-      phone: "+91 8010096692", //
-      linkedin: "https://linkedin.com/in/sonushivcharan", //
-      github: "https://github.com/sonu-shivcharan", //
-      location: "Pune, Maharashtra", //
-    },
-    summary:
-      "Full-Stack Web Developer with practical experience in building responsive, high-performance applications using Next.js, Node.js, and React.js. Skilled in developing scalable backend APIs, creating intuitive user interfaces, and integrating AI-powered features.", //
-  },
-  skills: {
-    languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"], //
-    frameworks: ["React.js", "Next.js", "Node.js"], //
-    tools: [
-      "Git/Github",
-      "Docker",
-      "Google Cloud Platform",
-      "Postman",
-      "MongoDB Atlas",
-      "QdrantDB",
-    ], //
-  },
-  experience: [
-    {
-      company: "Alaska App Studios, Pvt. Ltd.", //
-      role: "Web Development Intern", //
-      period: "February 2025 - May 2025", //
-      type: "Remote", //
-      achievements: [
-        "Developed and maintained responsive web applications using React.js", //
-        "Converted Figma designs into high-quality, reusable UI components", //
-        "Led a team of developers, ensuring smooth workflow and maintaining code quality", //
-      ],
-    },
-  ],
-  projects: [
-    {
-      title: "Tiffinz", //
-      subtitle: "Tiffin Service Management Web App", //
-      tech: ["Next.js", "MongoDB Atlas", "RBAC"], //
-      period: "May 2025 - Present", //
-      description:
-        "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.", //
-      points: [
-        "Developing an admin panel to verify manual payments and approve wallet top-ups.", //
-        "Integrating role-based access control (RBAC) for both users and admins.", //
-      ],
-    },
-    {
-      title: "Krishi Sahayak", //
-      subtitle: "AI-Powered Farmer Support",
-      tech: ["Next.js", "Genkit", "RAG", "QdrantDB", "Gemini LLM"], //
-      period: "September 2025 - October 2025", //
-      description:
-        "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.", //
-      points: [
-        "Implemented a RAG architecture with Google Genkit SDK, migrating from MongoDB Atlas to QdrantDB.", //
-        "Cleaned and ingested agricultural datasets from data.gov.in for context-aware retrieval.", //
-      ],
-    },
-    {
-      title: "Vidz Backend", //
-      subtitle: "Video Sharing Platform API",
-      tech: ["Node.js", "Express", "MongoDB", "Cloudinary"], //
-      period: "April 2025 - May 2025", //
-      description:
-        "Scalable RESTful API backend for a video-sharing platform designed with 30+ documented endpoints.", //
-      points: [
-        "Reduced video upload time by 60% by enabling direct uploads to Cloudinary.", //
-        "Implemented social features such as comments, likes, subscriptions, and user profiles.", //
-      ],
-    },
-  ],
-  education: [
-    {
-      institution: "Dr. DY Patil Arts, Commerce and Science College", //
-      degree: "Bachelor of Computer Applications", //
-      period: "July 2023 - June 2026", //
-      location: "Pune, Maharashtra", //
-    },
-  ],
-};
+import Footer from "@/components/Footer";
+import { PORTFOLIO_DATA } from "@/data/data";
+import { CiLinkedin } from "react-icons/ci";
+import { SiGithub, SiNextdotjs, SiNodedotjs, SiReact } from "react-icons/si";
+import { FiLinkedin } from "react-icons/fi";
+import { FaLinkedin, FaPaperPlane, FaXTwitter } from "react-icons/fa6";
+import { RiNextjsFill, RiPagesLine } from "react-icons/ri";
+import { PiPaperPlane } from "react-icons/pi";
 
 const Portfolio = () => {
   const { personalInfo, skills, experience, projects, education } =
     PORTFOLIO_DATA;
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans p-4 md:p-8">
-      <div className="max-w-5xl mx-auto space-y-12">
+    <div className="min-h-screen text-foreground font-sans p-4 md:p-8">
+      <div className="max-w-4xl mx-auto px-4 space-y-12 relative">
         {/* HERO SECTION */}
-        <section className="flex flex-col md:flex-row gap-8 items-start justify-between">
-          <div className="space-y-4 max-w-2xl">
-            <div className="">
-              <Avatar className="w-24 h-24">
-                <AvatarImage src="XX" alt="Sonu Shivcharan" />
-                <AvatarFallback>S</AvatarFallback>
-              </Avatar>
+
+        <section className=" relative">
+          <div className="absolute w-full h-full flex justify-center items-center pointer-events-none">
+            {/* <div className="w-1/2 h-1/2 bg-red-300 -z-10"></div> */}
+            <div className="mesh-gradient w-full h-full -z-20"></div>
+          </div>
+          <div className="space-y-4 flex flex-col md:flex-row gap-4 pt-10   ">
+            <Avatar className="w-24 h-24">
+              <AvatarImage src={undefined} alt="Sonu Shivcharan"></AvatarImage>
+              <AvatarFallback className="text-4xl font-bold">S</AvatarFallback>
+            </Avatar>
+          </div>
+          <div className="space-y-2">
+            <div className="z-10">
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
                 {personalInfo.name}
               </h1>
@@ -137,99 +64,75 @@ const Portfolio = () => {
             </div>
 
             <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-              {personalInfo.summary}
+              <span className="border border-dotted p-1">
+                Full-Stack Web Developer
+              </span>
+              with practical experience in building responsive, high-performance
+              applications using{" "}
+              <Button variant={"outline"}>
+                <SiNextdotjs />
+                Next.js
+              </Button>
+              ,
+              <Button variant={"outline"}>
+                <SiNodedotjs />
+                Node.js
+              </Button>
+              and
+              <Button variant={"outline"}>
+                <SiReact />
+                React.js
+              </Button>
+              . Skilled in developing scalable backend APIs, creating intuitive
+              user interfaces, and integrating AI-powered features.
             </p>
+          </div>
 
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild>
-                <a href={`mailto:${personalInfo.contact.email}`}>
-                  <Mail className="mr-2 h-4 w-4" /> Contact Me
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a
-                  href={personalInfo.contact.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" /> GitHub
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a
-                  href={personalInfo.contact.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex items-center text-sm text-muted-foreground pt-2">
-              <MapPin className="mr-1 h-4 w-4" />{" "}
-              {personalInfo.contact.location}
-            </div>
+          <div className="pt-8 flex flex-wrap gap-3">
+            <Button variant={"outline"}>
+              Resume <RiPagesLine />
+            </Button>
+            <Button asChild>
+              <a href={`mailto:${personalInfo.contact.email}`}>
+                <FaPaperPlane /> Contact Me
+              </a>
+            </Button>
+          </div>
+          <div className="flex flex-wrap gap-3 pt-4">
+            <Button variant="outline" asChild>
+              <a
+                href={personalInfo.contact.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiGithub className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a
+                href={personalInfo.contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaLinkedin className=" h-4 w-4" />
+              </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a
+                href={personalInfo.contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaXTwitter className=" h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+          <div className="flex items-center text-sm text-muted-foreground pt-2">
+            <MapPin className="mr-1 h-4 w-4" /> {personalInfo.contact.location}
           </div>
         </section>
 
-        <Separator />
-
-        {/* SKILLS SECTION */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold tracking-tight">
-            Technical Skills
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Languages */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Terminal className="h-5 w-5 text-primary" /> Languages
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {skills.languages.map((skill) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Frameworks */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Layout className="h-5 w-5 text-primary" /> Frameworks
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {skills.frameworks.map((skill) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Tools */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Server className="h-5 w-5 text-primary" /> Tools & DB
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {skills.tools.map((skill) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        {/* <Separator /> */}
 
         {/* PROJECTS SECTION */}
         <section className="space-y-6">
@@ -253,7 +156,7 @@ const Portfolio = () => {
                     <Badge variant="outline">{project.period}</Badge>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-grow space-y-4">
+                <CardContent className="grow space-y-4">
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {project.description}
                   </p>
@@ -353,15 +256,8 @@ const Portfolio = () => {
             ))}
           </div>
         </section>
-
-        {/* FOOTER */}
-        <footer className="py-8 text-center text-sm text-muted-foreground border-t">
-          <p>
-            © {new Date().getFullYear()} {personalInfo.name}. All rights
-            reserved.
-          </p>
-        </footer>
       </div>
+      <Footer />
     </div>
   );
 };
