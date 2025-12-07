@@ -52,6 +52,10 @@ export const PORTFOLIO_DATA = {
         "Developing an admin panel to verify manual payments and approve wallet top-ups.", //
         "Integrating role-based access control (RBAC) for both users and admins.", //
       ],
+      links:{
+        source:"https://github.com/sonu-shivcharan/tiffinz",
+        viewLive:null
+      }
     },
     {
       title: "Krishi Sahayak", //
@@ -64,6 +68,10 @@ export const PORTFOLIO_DATA = {
         "Implemented a RAG architecture with Google Genkit SDK, migrating from MongoDB Atlas to QdrantDB.", //
         "Cleaned and ingested agricultural datasets from data.gov.in for context-aware retrieval.", //
       ],
+       links:{
+        source:null,
+        viewLive:"htpps://ai-farmer-mu.vercel.app"
+      }
     },
     {
       title: "Vidz Backend", //
@@ -76,6 +84,10 @@ export const PORTFOLIO_DATA = {
         "Reduced video upload time by 60% by enabling direct uploads to Cloudinary.", //
         "Implemented social features such as comments, likes, subscriptions, and user profiles.", //
       ],
+       links:{
+        source:"https://github.com/sonu-shivcharan/vidz-backend",
+        viewLive:null
+      }
     },
   ],
   education: [

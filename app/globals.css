@@ -125,7 +125,7 @@
 }
 
 .mesh-gradient {
-  position: absolute;
+  /* position: absolute; */
   inset: 0;
   background: radial-gradient(
         circle at 80% 20%,
@@ -142,8 +142,10 @@
         rgba(0, 255, 150, 0.2),
         transparent 70%
       );
-  filter: blur(60px);
-  opacity: 0.8;
+  /* filter: blur(60px); */
+  opacity:0.9 ;
   pointer-events: none;
 }
+
+
 
