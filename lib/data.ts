@@ -1,16 +1,15 @@
-import { RiCollageLine } from "react-icons/ri";
-import { SiNextdotjs } from "react-icons/si";
-
 export const PORTFOLIO_DATA = {
   personalInfo: {
-    name: "Sonu Shivcharan", //
-    role: "Full-Stack Web Developer", //
+    name: "Sonu Shivcharan",
+    role: "Full-Stack Web Developer",
+    image: "https://media.licdn.com/dms/image/v2/D4D03AQEuuq5m4lByow/profile-displayphoto-shrink_400_400/B4DZj.V8yNIYAg-/0/1756613824320?e=1766620800&v=beta&t=yUsr82RmaquCSQMSCfPpkjJmvlNv9yLX2qccTVm7qlo",
     contact: {
-      email: "sonushivcharan@outlook.com", //
-      phone: "+91 8010096692", //
-      linkedin: "https://linkedin.com/in/sonushivcharan", //
-      github: "https://github.com/sonu-shivcharan", //
-      location: "Pune, Maharashtra", //
+      email: "sonushivcharan@outlook.com",
+      phone: "+91 8010096692", 
+      linkedin: "https://linkedin.com/in/sonushivcharan",
+      github: "https://github.com/sonu-shivcharan",
+      twitter: "https://x.com/SonuShivcharan",
+      location: "Pune, Maharashtra, India", 
     },
     summary:
       "Full-Stack Web Developer with practical experience in building responsive, high-performance applications using Next.js, Node.js, and React.js. Skilled in developing scalable backend APIs, creating intuitive user interfaces, and integrating AI-powered features.", //
