@@ -12,7 +12,7 @@ export const PORTFOLIO_DATA = {
       location: "Pune, Maharashtra, India", 
     },
     summary:
-      "Full-Stack Web Developer with practical experience in building responsive, high-performance applications using Next.js, Node.js, and React.js. Skilled in developing scalable backend APIs, creating intuitive user interfaces, and integrating AI-powered features.", //
+      "I build modern, fast, and scalable web applications usingNext.js,React.js,TypeScript,Node.jsandMongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
   },
   skills: {
     languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"], //
@@ -24,7 +24,7 @@ export const PORTFOLIO_DATA = {
       "Postman",
       "MongoDB Atlas",
       "QdrantDB",
-    ], //
+    ],
   },
   experience: [
     {
