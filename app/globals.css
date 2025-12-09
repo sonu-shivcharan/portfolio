@@ -120,32 +120,34 @@
     @apply bg-background text-foreground;
   }
 }
-.border-red{
-  border:1px solid red;
+.border-red {
+  border: 1px solid red;
 }
 
 .mesh-gradient {
   /* position: absolute; */
   inset: 0;
   background: radial-gradient(
-        circle at 80% 20%,
-        rgba(0, 255, 200, 0.4),
-        transparent 60%
-      ),
-      radial-gradient(
-        circle at 20% 80%,
-        rgba(0, 150, 255, 0.35),
-        transparent 60%
-      ),
-      radial-gradient(
-        circle at 50% 50%,
-        rgba(0, 255, 150, 0.2),
-        transparent 70%
-      );
+      circle at 80% 20%,
+      rgba(0, 255, 200, 0.4),
+      transparent 60%
+    ),
+    radial-gradient(circle at 20% 80%, rgba(0, 150, 255, 0.35), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 150, 0.2), transparent 70%);
   /* filter: blur(60px); */
-  opacity:0.9 ;
+  opacity: 0.9;
   pointer-events: none;
 }
-
-
-
+.animate-appear {
+  animation: appear ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@keyframes appear {
+  from {
+   transform:translateY(100px)
+  }
+  to {
+    transform: translateY(0);
+  }
+}
