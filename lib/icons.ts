@@ -11,19 +11,27 @@ import {
   SiVercel,
   SiJavascript,
   SiPostman,
-  SiReaddotcv,
+  SiExpress,
+  SiCloudinary,
+  SiFirebase,
+  SiReadthedocs,
+  SiGooglegemini,
+SiReaddotcv
 } from "react-icons/si";
-
 import {
   FaLinkedin,
   FaPaperPlane,
   FaXTwitter,
   FaEnvelope,
+  FaGraduationCap,
+  FaRobot,
 } from "react-icons/fa6";
-import { MapPin } from "lucide-react";
-import { FaGraduationCap } from "react-icons/fa";
+import { Database, MapPin } from "lucide-react"; // Assuming lucide for MapPin
+import { MdAdminPanelSettings } from "react-icons/md";
+
 
 export const icons = {
+  // Existing
   educative: SiEducative,
   git: SiGit,
   github: SiGithub,
@@ -37,6 +45,7 @@ export const icons = {
   javascript: SiJavascript,
   postman: SiPostman,
 
+  // Socials / UI
   linkedin: FaLinkedin,
   contact: FaPaperPlane,
   xtwitter: FaXTwitter,
@@ -44,4 +53,15 @@ export const icons = {
   resume: SiReaddotcv,
   location: MapPin,
   graduation: FaGraduationCap,
+
+  // NEW ADDITIONS FOR PROJECTS
+  express: SiExpress,
+  cloudinary: SiCloudinary,
+  googleGemini: SiGooglegemini, // Using Google Cloud as proxy or find specific
+  qdrant: null,
+  firebase: SiFirebase, // Good generic backend icon
+  ai: FaRobot, // For Generic AI/Genkit/RAG
+  admin: MdAdminPanelSettings, // For "RBAC" or generic concepts
+  database:Database
 };
+

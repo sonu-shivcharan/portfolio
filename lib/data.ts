@@ -1,3 +1,5 @@
+import { skills } from "./skills";
+
 export const PORTFOLIO_DATA = {
   personalInfo: {
     name: "Sonu Shivcharan",
@@ -39,54 +41,56 @@ export const PORTFOLIO_DATA = {
       ],
     },
   ],
-  projects: [
+projects: [
     {
-      title: "Tiffinz", //
-      subtitle: "Tiffin Service Management Web App", //
-      tech: ["Next.js", , "MongoDB Atlas", "RBAC"], //
-      period: "May 2025 - Present", //
+      title: "Tiffinz",
+      subtitle: "Tiffin Service Management Web App",
+      // Simply list the skills here. The frontend will receive the full object (name, icon, color).
+      tech: [skills.nextjs, skills.mongodb, skills.rbac], 
+      period: "May 2025 - Present",
       description:
-        "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.", //
+        "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
       points: [
-        "Developing an admin panel to verify manual payments and approve wallet top-ups.", //
-        "Integrating role-based access control (RBAC) for both users and admins.", //
+        "Developing an admin panel to verify manual payments and approve wallet top-ups.",
+        "Integrating role-based access control (RBAC) for both users and admins.",
       ],
-      links:{
-        source:"https://github.com/sonu-shivcharan/tiffinz",
-        viewLive:null
-      }
+      links: {
+        source: "https://github.com/sonu-shivcharan/tiffinz",
+        viewLive: null,
+      },
     },
     {
-      title: "Krishi Sahayak", //
+      title: "Krishi Sahayak",
       subtitle: "AI-Powered Farmer Support",
-      tech: ["Next.js", "Genkit", "RAG", "QdrantDB", "Gemini LLM"], //
-      period: "September 2025 - October 2025", //
+      // Reusing skills here easily
+      tech: [skills.nextjs, skills.genkit, skills.rag, skills.gemini], 
+      period: "September 2025 - October 2025",
       description:
-        "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.", //
+        "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.",
       points: [
-        "Implemented a RAG architecture with Google Genkit SDK, migrating from MongoDB Atlas to QdrantDB.", //
-        "Cleaned and ingested agricultural datasets from data.gov.in for context-aware retrieval.", //
+        "Implemented a RAG architecture with Google Genkit SDK, migrating from MongoDB Atlas to QdrantDB.",
+        "Cleaned and ingested agricultural datasets from data.gov.in for context-aware retrieval.",
       ],
-       links:{
-        source:null,
-        viewLive:"htpps://ai-farmer-mu.vercel.app"
-      }
+      links: {
+        source: null,
+        viewLive: "https://ai-farmer-mu.vercel.app",
+      },
     },
     {
-      title: "Vidz Backend", //
+      title: "Vidz Backend",
       subtitle: "Video Sharing Platform API",
-      tech: ["Node.js", "Express", "MongoDB", "Cloudinary"], //
-      period: "April 2025 - May 2025", //
+      tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
+      period: "April 2025 - May 2025",
       description:
-        "Scalable RESTful API backend for a video-sharing platform designed with 30+ documented endpoints.", //
+        "Scalable RESTful API backend for a video-sharing platform designed with 30+ documented endpoints.",
       points: [
-        "Reduced video upload time by 60% by enabling direct uploads to Cloudinary.", //
-        "Implemented social features such as comments, likes, subscriptions, and user profiles.", //
+        "Reduced video upload time by 60% by enabling direct uploads to Cloudinary.",
+        "Implemented social features such as comments, likes, subscriptions, and user profiles.",
       ],
-       links:{
-        source:"https://github.com/sonu-shivcharan/vidz-backend",
-        viewLive:null
-      }
+      links: {
+        source: "https://github.com/sonu-shivcharan/vidz-backend",
+        viewLive: null,
+      },
     },
   ],
   education: [

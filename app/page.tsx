@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowUpRightIcon } from "lucide-react";
 
 // Assumes standard shadcn/ui folder structure
@@ -20,6 +19,11 @@ import { PORTFOLIO_DATA } from "@/lib/data";
 import Link from "next/link";
 import { icons } from "@/lib/icons";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Portfolio = () => {
   const { personalInfo, experience, projects, education } = PORTFOLIO_DATA;
@@ -27,8 +31,7 @@ const Portfolio = () => {
   return (
     <>
       {/* HERO SECTION */}
-
-      <section className="relative animate-appear">
+      <section className="relative">
         <div className="">
           <div className="space-y-4 flex flex-col md:flex-row gap-4 pt-4 ">
             <Avatar className="w-28 h-28 my-6">
@@ -148,7 +151,7 @@ const Portfolio = () => {
             <Card
               key={idx}
               className={cn(
-                "flex flex-col rounded-xl",
+                "flex flex-col rounded-xl shadow-xs",
                 idx === 0 ? "md:col-span-2" : ""
               )}
             >
@@ -181,8 +184,20 @@ const Portfolio = () => {
               </CardContent>
               <CardFooter className="flex-wrap gap-2 pt-2">
                 {project.tech.map((t) => (
-                  <Badge key={t} variant="secondary" className="font-normal">
-                    {t}
+                  <Badge
+                    key={t.name}
+                    variant={"outline"}
+                    className="rounded-full bg-transparent w-8 h-8 p-1 flex items-center justify-center"
+                    asChild
+                  >
+                    <Tooltip>
+                      <TooltipContent>
+                        <p>{t.name}</p>
+                      </TooltipContent>
+                      <TooltipTrigger>
+                        <t.icon className={`w-6 h-6 mr-1 ${t.className}`} />
+                      </TooltipTrigger>
+                    </Tooltip>
                   </Badge>
                 ))}
                 {project.links.source && (
