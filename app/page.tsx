@@ -3,6 +3,7 @@ import { ArrowUpRightIcon } from "lucide-react";
 // Assumes standard shadcn/ui folder structure
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -163,8 +164,23 @@ const Portfolio = () => {
                       {project.subtitle}
                     </CardDescription>
                   </div>
-                  <Badge variant="outline">{project.period}</Badge>
                 </div>
+                <CardAction>
+                  {project.links.source && (
+                    <Button variant={"link"} asChild>
+                      <Link href={project.links.source}>
+                        <icons.github />
+                      </Link>
+                    </Button>
+                  )}
+                  {project.links.viewLive && (
+                    <Button variant={"link"} asChild>
+                      <Link href={project.links.viewLive}>
+                        <ArrowUpRightIcon />
+                      </Link>
+                    </Button>
+                  )}
+                </CardAction>
               </CardHeader>
               <CardContent className="grow space-y-4">
                 <p className="text-sm text-slate-600 dark:text-slate-300">
@@ -200,20 +216,6 @@ const Portfolio = () => {
                     </Tooltip>
                   </Badge>
                 ))}
-                {project.links.source && (
-                  <Button variant={"link"} asChild>
-                    <Link href={project.links.source}>
-                      <icons.github />
-                    </Link>
-                  </Button>
-                )}
-                {project.links.viewLive && (
-                  <Button variant={"link"} asChild>
-                    <Link href={project.links.viewLive}>
-                      <ArrowUpRightIcon />
-                    </Link>
-                  </Button>
-                )}
               </CardFooter>
             </Card>
           ))}
@@ -263,14 +265,14 @@ const Portfolio = () => {
       </section>
 
       {/* EDUCATION SECTION */}
-      <section className=" ">
+      <section>
         <h3 className="text-2xl font-bold tracking-tight">Education</h3>
         <div className="grid gap-4">
           {education.map((edu, idx) => (
             <Card key={idx} className=" border-none bg-transparent shadow-none">
               <CardContent className="p-6 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3">
+                  <div className="p-2">
                     <icons.graduation />
                   </div>
                   <div>
@@ -278,7 +280,7 @@ const Portfolio = () => {
                     <p className="text-primary font-medium">{edu.degree}</p>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="">
                   <p className="font-semibold">{edu.period}</p>
                   <p className="text-sm text-muted-foreground">
                     {edu.location}
