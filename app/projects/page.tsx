@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { icons } from "@/lib/icons";
 import { ArrowUpRightIcon } from "lucide-react";
+import { Activity } from "react";
 
 function ProjectsPage() {
   const { projects } = PORTFOLIO_DATA;
@@ -57,9 +58,11 @@ function ProjectsPage() {
             </CardContent>
             <CardFooter className="flex-wrap gap-2 pt-2">
               {project.tech.map((t) => (
-                <Badge key={t} variant="secondary" className="font-normal">
-                  {t}
-                </Badge>
+                <Badge
+                  key={t.name}
+                  variant="secondary"
+                  className="font-normal"
+                ></Badge>
               ))}
               {project.links.source && (
                 <Button variant={"link"} asChild>
