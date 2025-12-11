@@ -13,8 +13,8 @@ export default function Navbar() {
     setTheme(newTheme);
   };
   return (
-    <div className="w-full fixed top-0 left-0 z-40 bg-transparent p-4 flex items-center">
-      <nav className="max-w-fit mx-auto flex bg-accent/20 items-center justify-center gap-6 border backdrop-blur-xl px-4  rounded-4xl overflow-clip shadow-sm">
+    <div className="w-full sticky top-0 left-0 z-40 bg-transparent p-4 flex items-center">
+      <nav className="max-w-fit mx-auto flex bg-accent/10 items-center justify-center gap-6 border backdrop-blur-xl px-4  rounded-4xl overflow-clip shadow-sm">
         <NavLinkItem href="/" label="Home" />
         <NavLinkItem href="/projects" label="Projects" />
         <NavLinkItem href="/blogs" label="Blogs" />
