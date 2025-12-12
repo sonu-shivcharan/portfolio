@@ -1,20 +1,37 @@
 import { skills } from "./skills";
+import { icons } from "./icons";
 
 export const PORTFOLIO_DATA = {
   personalInfo: {
     name: "Sonu Shivcharan",
     role: "Full-Stack Web Developer",
-    image: "https://media.licdn.com/dms/image/v2/D4D03AQEuuq5m4lByow/profile-displayphoto-shrink_400_400/B4DZj.V8yNIYAg-/0/1756613824320?e=1766620800&v=beta&t=yUsr82RmaquCSQMSCfPpkjJmvlNv9yLX2qccTVm7qlo",
-    contact: {
-      email: "sonushivcharan@outlook.com",
-      phone: "+91 8010096692", 
-      linkedin: "https://linkedin.com/in/sonushivcharan",
-      github: "https://github.com/sonu-shivcharan",
-      twitter: "https://x.com/SonuShivcharan",
-      location: "Pune, Maharashtra, India", 
-    },
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D03AQEuuq5m4lByow/profile-displayphoto-shrink_400_400/B4DZj.V8yNIYAg-/0/1756613824320?e=1766620800&v=beta&t=yUsr82RmaquCSQMSCfPpkjJmvlNv9yLX2qccTVm7qlo",
+    contact: [
+      {
+        name: "Email",
+        link: "mailto:sonushivcharan@outlook.com",
+        icon: icons.envelope,
+      },
+      {
+        name: "LinkedIn",
+        link: "https://linkedin.com/in/sonushivcharan",
+        icon: icons.linkedin,
+      },
+      {
+        name: "GitHub",
+        link: "https://github.com/sonu-shivcharan",
+        icon: icons.github,
+      },
+      {
+        name: "Twitter",
+        link: "https://x.com/SonuShivcharan",
+        icon: icons.xtwitter,
+      },
+    ],
+    location:"Pune, Maharashtra, India",
     summary:
-      "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.jsandMongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
+      "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
   },
   skills: {
     languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"], //
@@ -41,14 +58,20 @@ export const PORTFOLIO_DATA = {
       ],
     },
   ],
-projects: [
+  projects: [
     {
       title: "Tiffinz",
       subtitle: "Tiffin Service Management Web App",
       // Simply list the skills here. The frontend will receive the full object (name, icon, color).
-      tech: [skills.nextjs,skills.reactjs, skills.tailwindcss, skills.mongodb, skills.rbac], 
+      tech: [
+        skills.nextjs,
+        skills.reactjs,
+        skills.tailwindcss,
+        skills.mongodb,
+        skills.rbac,
+      ],
       period: "May 2025 - Present",
-      isFeatured:true,
+      isFeatured: true,
       description:
         "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
       points: [
@@ -64,9 +87,15 @@ projects: [
       title: "Krishi Sahayak",
       subtitle: "AI-Powered Farmer Support",
       // Reusing skills here easily
-      tech: [skills.nextjs,skills.reactjs, skills.genkit, skills.rag, skills.gemini], 
+      tech: [
+        skills.nextjs,
+        skills.reactjs,
+        skills.genkit,
+        skills.rag,
+        skills.gemini,
+      ],
       period: "September 2025 - October 2025",
-      isFeatured:true,
+      isFeatured: true,
       description:
         "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.",
       points: [
@@ -83,7 +112,7 @@ projects: [
       subtitle: "Video Sharing Platform API",
       tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
       period: "April 2025 - May 2025",
-      isFeatured:true,
+      isFeatured: true,
       description:
         "Scalable RESTful API backend for a video-sharing platform designed with 30+ documented endpoints.",
       points: [
