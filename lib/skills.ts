@@ -8,6 +8,21 @@ export const skills = {
     // Adapts to dark mode automatically
     className: "text-zinc-950 dark:text-white", 
   },
+  reactjs: {
+    name: "React.js",
+    icon: icons.reactjs,
+    className: "text-sky-500 dark:text-sky-400",
+  },
+  tailwindcss: {
+    name: "Tailwind CSS",
+    icon: icons.tailwindcss,
+    className: "text-sky-500 dark:text-sky-500",
+  },
+  typescript: {
+    name: "TypeScript",
+    icon: icons.typescript,
+    className: "text-blue-600 dark:text-blue-500",
+  },
   mongodb: {
     name: "MongoDB",
     icon: icons.mongodb,

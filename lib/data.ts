@@ -14,7 +14,7 @@ export const PORTFOLIO_DATA = {
       location: "Pune, Maharashtra, India", 
     },
     summary:
-      "I build modern, fast, and scalable web applications usingNext.js,React.js,TypeScript,Node.jsandMongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
+      "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.jsandMongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
   },
   skills: {
     languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"], //
@@ -46,8 +46,9 @@ projects: [
       title: "Tiffinz",
       subtitle: "Tiffin Service Management Web App",
       // Simply list the skills here. The frontend will receive the full object (name, icon, color).
-      tech: [skills.nextjs, skills.mongodb, skills.rbac], 
+      tech: [skills.nextjs,skills.reactjs, skills.tailwindcss, skills.mongodb, skills.rbac], 
       period: "May 2025 - Present",
+      isFeatured:true,
       description:
         "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
       points: [
@@ -63,8 +64,9 @@ projects: [
       title: "Krishi Sahayak",
       subtitle: "AI-Powered Farmer Support",
       // Reusing skills here easily
-      tech: [skills.nextjs, skills.genkit, skills.rag, skills.gemini], 
+      tech: [skills.nextjs,skills.reactjs, skills.genkit, skills.rag, skills.gemini], 
       period: "September 2025 - October 2025",
+      isFeatured:true,
       description:
         "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.",
       points: [
@@ -81,6 +83,7 @@ projects: [
       subtitle: "Video Sharing Platform API",
       tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
       period: "April 2025 - May 2025",
+      isFeatured:true,
       description:
         "Scalable RESTful API backend for a video-sharing platform designed with 30+ documented endpoints.",
       points: [

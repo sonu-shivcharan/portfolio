@@ -1,30 +1,16 @@
-import { ArrowUpRightIcon } from "lucide-react";
-
-// Assumes standard shadcn/ui folder structure
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 import { PORTFOLIO_DATA } from "@/lib/data";
-
-import Link from "next/link";
+import ProjectCard from "@/components/projects/ProjectCard";
 import { icons } from "@/lib/icons";
-import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const Portfolio = () => {
   const { personalInfo, experience, projects, education } = PORTFOLIO_DATA;
@@ -148,77 +134,11 @@ const Portfolio = () => {
       <section className="space-y-6">
         <h3 className="text-2xl font-bold tracking-tight">Featured Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 border-collapse">
-          {projects.map((project, idx) => (
-            <Card
-              key={idx}
-              className={cn(
-                "flex flex-col rounded-xl shadow-xs",
-                idx === 0 ? "md:col-span-2" : ""
-              )}
-            >
-              <CardHeader>
-                <div className="flex justify-baseline flex-wrap md:justify-between md:flex-nowrap items-start">
-                  <div>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="mt-1 text-base">
-                      {project.subtitle}
-                    </CardDescription>
-                  </div>
-                </div>
-                <CardAction>
-                  {project.links.source && (
-                    <Button variant={"link"} asChild>
-                      <Link href={project.links.source}>
-                        <icons.github />
-                      </Link>
-                    </Button>
-                  )}
-                  {project.links.viewLive && (
-                    <Button variant={"link"} asChild>
-                      <Link href={project.links.viewLive}>
-                        <ArrowUpRightIcon />
-                      </Link>
-                    </Button>
-                  )}
-                </CardAction>
-              </CardHeader>
-              <CardContent className="grow space-y-4">
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  {project.description}
-                </p>
-                <ul className="space-y-2">
-                  {project.points.map((point, pIdx) => (
-                    <li
-                      key={pIdx}
-                      className="text-sm text-muted-foreground flex items-start gap-2"
-                    >
-                      <span className="text-primary mt-1.5">•</span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter className="flex-wrap gap-2 pt-2">
-                {project.tech.map((t) => (
-                  <Badge
-                    key={t.name}
-                    variant={"outline"}
-                    className="rounded-full bg-transparent w-8 h-8 p-1 flex items-center justify-center"
-                    asChild
-                  >
-                    <Tooltip>
-                      <TooltipContent>
-                        <p>{t.name}</p>
-                      </TooltipContent>
-                      <TooltipTrigger>
-                        <t.icon className={`w-6 h-6 mr-1 ${t.className}`} />
-                      </TooltipTrigger>
-                    </Tooltip>
-                  </Badge>
-                ))}
-              </CardFooter>
-            </Card>
-          ))}
+          {projects
+            .filter((project) => project.isFeatured)
+            .map((project) => (
+              <ProjectCard project={project} key={project.title} />
+            ))}
         </div>
       </section>
 
