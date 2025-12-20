@@ -1,8 +1,7 @@
 import ProjectCard from "@/components/projects/ProjectCard";
-import { PORTFOLIO_DATA } from "@/lib/data";
+import { projects } from "@/lib/projects";
 
 function ProjectsPage() {
-  const { projects } = PORTFOLIO_DATA;
   return (
     <section className="space-y-6 pt-10">
       <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
