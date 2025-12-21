@@ -2,18 +2,19 @@ import { IconType } from "react-icons";
 import { skills } from "@/lib/skills";
 export interface Skill {
   name: string;
-  icon: IconType; // or ReactNode if using components
+  icon: IconType;
   className?: string;
 }
+export type ProjectStatus = "working" | "not working" | "building" | "limited";
 export interface Project {
   title: string;
   subtitle: string;
-  tech: Skill[]; // assuming Skill is the type of each skills.* entry
+  tech: Skill[];
   period: string;
   description: string;
   isFeatured?: boolean;
   img: string;
-  status: string;
+  status: [ProjectStatus, string];
   links: {
     source: string | null;
     viewLive: string | null;
@@ -32,7 +33,7 @@ export const projects: Project[] = [
     ],
     period: "May 2025 - Present",
     isFeatured: true,
-    status: "Building",
+    status: ["working", "Currently Improving"],
     description:
       "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
     img: "/projects/tiffinz.png",
@@ -44,7 +45,7 @@ export const projects: Project[] = [
   {
     title: "Krishi Sahayak",
     subtitle: "AI-Powered Farmer Support",
-    status: "In Progress",
+    status: ["building", "Prototype"],
     tech: [
       skills.nextjs,
       skills.reactjs,
@@ -66,7 +67,7 @@ export const projects: Project[] = [
     title: "Vidz Backend",
     subtitle: "Video Sharing Platform API",
     tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
-    status: "Completed",
+    status: ["working", "Completed"],
     period: "April 2025 - May 2025",
     isFeatured: true,
     description:

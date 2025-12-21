@@ -17,13 +17,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Project } from "@/lib/projects";
+import { Project, ProjectStatus, Skill } from "@/data/projects/projects";
 import Image from "next/image";
 
 function ProjectCard({ project }: { project: Project }) {
   const slug = project.title.split(" ").join("-").toLowerCase();
   return (
-    <Card className={cn("flex flex-col rounded-2xl shadow-xs overflow-clip")}>
+    <Card
+      className={cn(
+        "flex flex-col gap-2 justify-between rounded-2xl shadow-xs overflow-clip"
+      )}
+    >
       <div className="-mt-6">
         <Image
           className=""
@@ -33,58 +37,27 @@ function ProjectCard({ project }: { project: Project }) {
           alt={project.title}
         ></Image>
       </div>
-      <CardHeader className="">
-        <div className="flex justify-baseline flex-wrap md:justify-between md:flex-nowrap items-start">
-          <div>
-            <CardTitle className="text-xl">{project.title}</CardTitle>
-            <CardDescription className="mt-1 text-base">
-              {project.subtitle}
-            </CardDescription>
-          </div>
+      <CardHeader className="my-0 mb-0">
+        <div>
+          <CardTitle className="text-xl flex items-center justify-between w-full">
+            {project.title}
+            <ProjectLinks links={project.links} />
+          </CardTitle>
+          <CardDescription className="mt-1 text-base">
+            {project.subtitle}
+          </CardDescription>
         </div>
       </CardHeader>
 
-      <CardContent className=" py-0">
-        {project.links.source && (
-          <Button variant={"link"} asChild>
-            <Link href={project.links.source}>
-              <icons.github />
-            </Link>
-          </Button>
-        )}
-        {project.links.viewLive && (
-          <Button variant={"link"} asChild>
-            <Link href={project.links.viewLive}>
-              <ArrowUpRightSquareIcon />
-            </Link>
-          </Button>
-        )}
-
-        <p className="text-sm text-slate-600 dark:text-slate-300">
+      <CardContent className=" py-0 ">
+        <p className="text-sm text-muted-foreground mb-4">
           {project.description}
         </p>
       </CardContent>
-      <CardFooter className="flex-wrap justify-between gap-2 pt-2">
-        <div>
-          {project.tech.map((t) => (
-            <Badge
-              key={t.name}
-              variant={"outline"}
-              className="rounded-full bg-transparent w-8 h-8 p-1 flex items-center justify-center"
-              asChild
-            >
-              <Tooltip>
-                <TooltipContent>
-                  <p>{t.name}</p>
-                </TooltipContent>
-                <TooltipTrigger>
-                  <t.icon className={`w-6 h-6 mr-1 ${t.className}`} />
-                </TooltipTrigger>
-              </Tooltip>
-            </Badge>
-          ))}
-        </div>
-        <div>
+      <CardFooter className="block justify-between gap-2">
+        <TechStack tech={project.tech} />
+        <div className="flex justify-between items-center">
+          <ProjectStatusBadge status={project.status} />
           <Button variant={"outline"} asChild>
             <Link
               href={`/projects/${slug}`}
@@ -100,3 +73,80 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default ProjectCard;
+
+function TechStack({ tech }: { tech: Skill[] }) {
+  return (
+    <div className="w-full mb-2">
+      <h4 className="text-sm text-muted-foreground mb-2">Tech Stack</h4>
+      <div className="space-x-2">
+        {tech.map((t) => (
+          <Badge
+            key={t.name}
+            variant={"outline"}
+            className="rounded-full bg-transparent w-8 h-8 p-1 flex items-center justify-center"
+            asChild
+          >
+            <Tooltip>
+              <TooltipContent>
+                <p>{t.name}</p>
+              </TooltipContent>
+              <TooltipTrigger>
+                <t.icon className={`w-6 h-6 mr-1 ${t.className}`} />
+              </TooltipTrigger>
+            </Tooltip>
+          </Badge>
+        ))}
+      </div>
+    </div>
+  );
+}
+const STATUS_STYLES: Record<ProjectStatus, string> = {
+  building:
+    "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400",
+  working:
+    "border-green-500/40 bg-green-500/10 text-green-600 dark:text-green-400",
+  limited: "border-blue-500/40 bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  "not working":
+    "border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400",
+};
+
+export function ProjectStatusBadge({
+  status,
+}: {
+  status: [ProjectStatus, string];
+}) {
+  const [type, label] = status;
+
+  return (
+    <Badge
+      variant="outline"
+      className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_STYLES[type]}`}
+    >
+      {label}
+    </Badge>
+  );
+}
+function ProjectLinks({
+  links,
+}: {
+  links: { source: string | null; viewLive: string | null };
+}) {
+  return (
+    <div>
+      {links.source && (
+        <Button variant={"link"} asChild>
+          <Link href={links.source}>
+            <icons.github />
+          </Link>
+        </Button>
+      )}
+      {links.viewLive && (
+        <Button variant={"link"} asChild>
+          <Link href={links.viewLive}>
+            <ArrowUpRightSquareIcon />
+          </Link>
+        </Button>
+      )}
+    </div>
+  );
+}
