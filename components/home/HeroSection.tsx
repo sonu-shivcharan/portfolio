@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { PORTFOLIO_DATA } from "@/lib/data";
+import { PORTFOLIO_DATA } from "@/data/data";
 import { Badge } from "@/components/ui/badge";
 import { icons } from "@/lib/icons";
 import Link from "next/link";
-import { IconType } from "react-icons";
+
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function HeroSection() {
