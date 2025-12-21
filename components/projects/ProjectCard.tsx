@@ -77,7 +77,9 @@ export default ProjectCard;
 function TechStack({ tech }: { tech: Skill[] }) {
   return (
     <div className="w-full mb-2">
-      <h4 className="text-sm text-muted-foreground mb-2">Tech Stack</h4>
+      <h4 className="text-sm text-muted-foreground mb-2 font-medium">
+        Technologies
+      </h4>
       <div className="space-x-2">
         {tech.map((t) => (
           <Badge
@@ -135,14 +137,14 @@ function ProjectLinks({
     <div>
       {links.source && (
         <Button variant={"link"} asChild>
-          <Link href={links.source}>
+          <Link href={links.source} target="_blank">
             <icons.github />
           </Link>
         </Button>
       )}
       {links.viewLive && (
         <Button variant={"link"} asChild>
-          <Link href={links.viewLive}>
+          <Link href={links.viewLive} target="_blank">
             <ArrowUpRightSquareIcon />
           </Link>
         </Button>
