@@ -14,9 +14,8 @@ import {
   SiExpress,
   SiCloudinary,
   SiFirebase,
-  SiReadthedocs,
   SiGooglegemini,
-SiReaddotcv
+  SiReaddotcv,
 } from "react-icons/si";
 import {
   FaLinkedin,
@@ -28,7 +27,6 @@ import {
 } from "react-icons/fa6";
 import { Database, MapPin } from "lucide-react"; // Assuming lucide for MapPin
 import { MdAdminPanelSettings } from "react-icons/md";
-
 
 export const icons = {
   // Existing
@@ -62,6 +60,5 @@ export const icons = {
   firebase: SiFirebase, // Good generic backend icon
   ai: FaRobot, // For Generic AI/Genkit/RAG
   admin: MdAdminPanelSettings, // For "RBAC" or generic concepts
-  database:Database
+  database: Database,
 };
-
