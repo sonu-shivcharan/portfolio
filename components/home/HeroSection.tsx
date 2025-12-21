@@ -34,35 +34,9 @@ function HeroSection() {
             </h2>
           </div>
 
-          <p className="text-[18px] leading-8 text-muted-foreground mt-6">
-            I build modern and scalable web applications using
-            <Badge className=" backdrop-blur-sm" variant={"outline"}>
-              <icons.nextjs className="h-8 w-8" />
-              Next.js
-            </Badge>
-            ,
-            <Badge className="mx-1 backdrop-blur-sm" variant={"outline"}>
-              <icons.reactjs className="text-sky-500" />
-              React.js
-            </Badge>
-            ,
-            <Badge className="" variant={"outline"}>
-              <icons.typescript className="text-sky-500"></icons.typescript>
-              TypeScript
-            </Badge>
-            ,
-            <Badge className="mx-1 backdrop-blur-sm" variant={"outline"}>
-              <icons.nodejs className="text-green-600" />
-              Node.js
-            </Badge>
-            and
-            <Badge className="mx-1 backdrop-blur-sm" variant={"outline"}>
-              <icons.mongodb className="text-green-600" />
-              MongoDB
-            </Badge>
-            . I craft smooth user experiences, build reliable APIs, and explore
-            AI integrations. Actively learning advanced backend concepts
-          </p>
+          <TechSentence
+            techStack={["nextjs", "reactjs", "typescript", "mongodb", "nodejs"]}
+          />
         </div>
 
         <div className="pt-8 flex flex-wrap gap-3">
@@ -101,3 +75,40 @@ function HeroSection() {
 }
 
 export default HeroSection;
+
+const TECH_META = {
+  nextjs: { label: "Next.js", className: "" },
+  reactjs: { label: "React.js", className: "text-sky-500" },
+  typescript: { label: "TypeScript", className: "text-sky-500" },
+  nodejs: { label: "Node.js", className: "text-green-600" },
+  mongodb: { label: "MongoDB", className: "text-green-600" },
+} as const;
+
+type TechKey = keyof typeof TECH_META;
+
+export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
+  if (!techStack?.length) return null;
+
+  return (
+    <p className="text-muted-foreground leading-relaxed">
+      I build modern and scalable web applications using
+      <span className="inline-flex flex-wrap items-center gap-2 font-medium text-foreground">
+        {techStack.map((tech, index) => {
+          const Icon = icons[tech];
+          const { label, className } = TECH_META[tech];
+
+          return (
+            <span key={tech} className="inline-flex items-center gap-1">
+              <Icon className={`h-4 w-4 ${className ?? ""}`} />
+              {label}
+              {index < techStack.length - 2 && ","}
+              {index === techStack.length - 2 && " and"}
+            </span>
+          );
+        })}
+      </span>
+      . I craft smooth user experiences, build reliable APIs, and explore AI
+      integrations. Actively learning advanced backend concepts.
+    </p>
+  );
+}
