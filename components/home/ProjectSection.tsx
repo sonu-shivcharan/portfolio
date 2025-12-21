@@ -1,5 +1,7 @@
 import { projects } from "@/data/projects/projects";
 import ProjectCard from "../projects/ProjectCard";
+import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 
 function ProjectSection() {
   return (
@@ -11,6 +13,12 @@ function ProjectSection() {
           .map((project) => (
             <ProjectCard project={project} key={project.title} />
           ))}
+      </div>
+      <div className="flex justify-center">
+        <Button variant={"outline"} className="mx-auto">
+          View All Projects
+          <ArrowRight />
+        </Button>
       </div>
     </section>
   );
