@@ -16,6 +16,12 @@ import {
   SiFirebase,
   SiGooglegemini,
   SiReaddotcv,
+  SiRedux,
+  SiAppwrite,
+  SiDocker,
+  SiSupabase,
+  SiHtml5,
+  SiCss3,
 } from "react-icons/si";
 import {
   FaLinkedin,
@@ -29,22 +35,36 @@ import { Database, MapPin } from "lucide-react"; // Assuming lucide for MapPin
 import { MdAdminPanelSettings } from "react-icons/md";
 
 export const icons = {
-  // Existing
-  educative: SiEducative,
-  git: SiGit,
-  github: SiGithub,
+  html: SiHtml5,
+  css: SiCss3,
+  javascript: SiJavascript,
+  typescript: SiTypescript,
   nextjs: SiNextdotjs,
-  nodejs: SiNodedotjs,
   reactjs: SiReact,
+  nodejs: SiNodedotjs,
+  express: SiExpress,
   mongodb: SiMongodb,
   tailwindcss: SiTailwindcss,
-  typescript: SiTypescript,
+  redux: SiRedux,
+
+  //tools & services
+  git: SiGit,
+  github: SiGithub,
+  docker: SiDocker,
   vercel: SiVercel,
-  javascript: SiJavascript,
   postman: SiPostman,
+  cloudinary: SiCloudinary,
+  googleGemini: SiGooglegemini,
+  qdrant: null,
+
+  //baas
+  appwrite: SiAppwrite,
+  firebase: SiFirebase,
+  supabase: SiSupabase,
 
   // Socials / UI
   linkedin: FaLinkedin,
+  educative: SiEducative,
   contact: FaPaperPlane,
   xtwitter: FaXTwitter,
   envelope: FaEnvelope,
@@ -52,13 +72,7 @@ export const icons = {
   location: MapPin,
   graduation: FaGraduationCap,
 
-  // NEW ADDITIONS FOR PROJECTS
-  express: SiExpress,
-  cloudinary: SiCloudinary,
-  googleGemini: SiGooglegemini, // Using Google Cloud as proxy or find specific
-  qdrant: null,
-  firebase: SiFirebase, // Good generic backend icon
-  ai: FaRobot, // For Generic AI/Genkit/RAG
-  admin: MdAdminPanelSettings, // For "RBAC" or generic concepts
+  ai: FaRobot,
+  admin: MdAdminPanelSettings,
   database: Database,
 };
