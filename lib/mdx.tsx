@@ -1,32 +1,37 @@
-// lib/mdx.tsx
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
 
-const BLOGS_PATH = path.join(process.cwd(), "blogs");
+type MDXOptions = {
+  contentDir: string;
+};
 
-export function getAllSlugs() {
+const CONTENT_ROOT = path.join(process.cwd(), "data");
+
+function getDirPath(contentDir: string) {
+  return path.join(CONTENT_ROOT, contentDir);
+}
+
+export function getAllSlugs({ contentDir }: MDXOptions) {
+  const dirPath = getDirPath(contentDir);
+
   return fs
-    .readdirSync(BLOGS_PATH)
+    .readdirSync(dirPath)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-export async function getPost(slug: string) {
-  try {
-    const filePath = path.join(BLOGS_PATH, `${slug}.mdx`);
-    console.log("Reading MDX:", filePath);
+export async function getMDXBySlug(slug: string, { contentDir }: MDXOptions) {
+  const filePath = path.join(getDirPath(contentDir), `${slug}.mdx`);
 
-    const source = fs.readFileSync(filePath, "utf8");
-    const { content, data } = matter(source);
+  const source = fs.readFileSync(filePath, "utf8");
+  const { content, data } = matter(source);
 
-    const mdx = <MDXRemote source={content} components={mdxComponents} />;
-
-    return { mdx, frontmatter: data };
-  } catch (err) {
-    console.error("MDX ERROR:", err);
-    throw err;
-  }
+  return {
+    content: <MDXRemote source={content} components={mdxComponents} />,
+    frontmatter: data,
+    slug,
+  };
 }
