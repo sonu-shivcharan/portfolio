@@ -29,6 +29,7 @@ export const projects: Project[] = [
       skills.reactjs,
       skills.tailwindcss,
       skills.mongodb,
+      skills.redux,
       skills.rbac,
     ],
     period: "May 2025 - Present",
@@ -67,7 +68,7 @@ export const projects: Project[] = [
     title: "Vidz Backend",
     subtitle: "Video Sharing Platform API",
     tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
-    status: ["working", "Completed"],
+    status: ["building", "Building"],
     period: "April 2025 - May 2025",
     isFeatured: true,
     description:
@@ -76,6 +77,42 @@ export const projects: Project[] = [
     links: {
       source: "https://github.com/sonu-shivcharan/vidz-backend",
       viewLive: null,
+    },
+  },
+  {
+    title: "Templatz",
+    subtitle: "AI-Powered Formal Letter Generator (v3)",
+    tech: [
+      skills.nextjs,
+      skills.reactjs,
+      skills.vercel,
+      skills.tailwindcss,
+      skills.gemini,
+      skills.redux,
+    ],
+    status: ["working", "All Systems Operational"],
+    period: "April 2025 - May 2025",
+    isFeatured: true,
+    description:
+      "An AI-powered tool that helps students and professionals quickly generate formal letters for academic and official use, now enhanced with Gemini API-based personalized content generation.",
+    img: "/projects/vidz-backend.png",
+    links: {
+      source: "https://github.com/sonu-shivcharan/templatz",
+      viewLive: "https://templatz.vercel.app/",
+    },
+  },
+  {
+    title: "Blog App",
+    subtitle: "Blogging Web App",
+    tech: [skills.reactjs, skills.tailwindcss, skills.appwrite, skills.redux],
+    status: ["working", "All Systems Operational"],
+    period: "April 2025 - May 2025",
+    isFeatured: false,
+    description: "Blog App ",
+    img: "/projects/vidz-backend.png",
+    links: {
+      source: "https://github.com/sonu-shivcharan/react-blog-app",
+      viewLive: "https://x-blog-app.vercel.app/",
     },
   },
 ];
