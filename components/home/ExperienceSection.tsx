@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PORTFOLIO_DATA } from "@/lib/data";
+import { PORTFOLIO_DATA } from "@/data/data";
 
 function ExperienceSection() {
   const experience = PORTFOLIO_DATA.experience;

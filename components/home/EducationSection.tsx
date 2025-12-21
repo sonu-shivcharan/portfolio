@@ -1,12 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { PORTFOLIO_DATA } from "@/lib/data";
+import { Card, CardContent } from "@/components/ui/card";
+import { PORTFOLIO_DATA } from "@/data/data";
 import { icons } from "@/lib/icons";
 
 function EducationSection() {

@@ -1,4 +1,4 @@
-import { projects } from "@/lib/projects";
+import { projects } from "@/data/projects/projects";
 import ProjectCard from "../projects/ProjectCard";
 
 function ProjectSection() {
