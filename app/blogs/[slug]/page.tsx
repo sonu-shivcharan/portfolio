@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { getAllSlugs, getPost } from "@/lib/mdx";
-
-export const dynamicParams = false;
-export const revalidate = 60;
+import { getAllSlugs, getMDXBySlug } from "@/lib/mdx";
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  return getAllSlugs({ contentDir: "blogs" }).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata(props: {
@@ -14,7 +11,7 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
 
   try {
-    const { frontmatter } = await getPost(slug);
+    const { frontmatter } = await getMDXBySlug(slug, { contentDir: "blogs" });
     return {
       title: frontmatter.title,
       description: frontmatter.description,
@@ -32,7 +29,9 @@ export default async function BlogPage(props: {
 }) {
   const { slug } = await props.params;
 
-  const { mdx, frontmatter } = await getPost(slug);
+  const { content: mdx, frontmatter } = await getMDXBySlug(slug, {
+    contentDir: "blogs",
+  });
 
   return (
     <article className="prose mx-auto py-10">
