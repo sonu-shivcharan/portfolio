@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
-import { skills } from "./skills";
-interface Skill {
+import { skills } from "@/lib/skills";
+export interface Skill {
   name: string;
   icon: IconType; // or ReactNode if using components
   className?: string;
@@ -13,6 +13,7 @@ export interface Project {
   description: string;
   isFeatured?: boolean;
   img: string;
+  status: string;
   links: {
     source: string | null;
     viewLive: string | null;
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     ],
     period: "May 2025 - Present",
     isFeatured: true,
+    status: "Building",
     description:
       "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
     img: "/projects/tiffinz.png",
@@ -42,7 +44,7 @@ export const projects: Project[] = [
   {
     title: "Krishi Sahayak",
     subtitle: "AI-Powered Farmer Support",
-    // Reusing skills here easily
+    status: "In Progress",
     tech: [
       skills.nextjs,
       skills.reactjs,
@@ -64,6 +66,7 @@ export const projects: Project[] = [
     title: "Vidz Backend",
     subtitle: "Video Sharing Platform API",
     tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
+    status: "Completed",
     period: "April 2025 - May 2025",
     isFeatured: true,
     description:

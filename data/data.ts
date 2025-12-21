@@ -1,5 +1,5 @@
-import { skills } from "./skills";
-import { icons } from "./icons";
+import { skills } from "@/lib/skills";
+import { icons } from "@/lib/icons";
 
 export const PORTFOLIO_DATA = {
   personalInfo: {
@@ -29,7 +29,7 @@ export const PORTFOLIO_DATA = {
         icon: icons.xtwitter,
       },
     ],
-    location:"Pune, Maharashtra, India",
+    location: "Pune, Maharashtra, India",
     summary:
       "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
   },
