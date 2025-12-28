@@ -2,6 +2,7 @@ import { projects } from "@/data/projects/projects";
 import ProjectCard from "../projects/ProjectCard";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 function ProjectSection() {
   return (
@@ -15,9 +16,11 @@ function ProjectSection() {
           ))}
       </div>
       <div className="flex justify-center">
-        <Button variant={"outline"} className="mx-auto">
-          View All Projects
-          <ArrowRight />
+        <Button variant={"outline"} className="mx-auto" asChild>
+          <Link href={"/projects"}>
+            View All Projects
+            <ArrowRight />
+          </Link>
         </Button>
       </div>
     </section>
