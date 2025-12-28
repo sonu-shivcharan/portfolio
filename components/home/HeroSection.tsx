@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PORTFOLIO_DATA } from "@/data/data";
-import { Badge } from "@/components/ui/badge";
 import { icons } from "@/lib/icons";
 import Link from "next/link";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import React from "react";
 
 function HeroSection() {
   const personalInfo = PORTFOLIO_DATA.personalInfo;
@@ -90,20 +90,25 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
   if (!techStack?.length) return null;
 
   return (
-    <p className="text-muted-foreground leading-relaxed">
+    <p className="text-muted-foreground">
       I build modern and scalable web applications using
-      <span className="inline-flex flex-wrap items-center gap-2 font-medium text-foreground">
+      <span className="inline p-1 font-medium text-foreground">
         {techStack.map((tech, index) => {
           const Icon = icons[tech];
           const { label, className } = TECH_META[tech];
 
           return (
-            <span key={tech} className="inline-flex items-center gap-1">
-              <Icon className={`h-4 w-4 ${className ?? ""}`} />
-              {label}
+            <React.Fragment key={label}>
+              <span
+                key={tech}
+                className="inline-flex items-center px-2 mt-1 gap-1 border mx-1 rounded-xl"
+              >
+                <Icon className={`h-4 w-4 ${className ?? ""}`} />
+                {label}
+              </span>
               {index < techStack.length - 2 && ","}
               {index === techStack.length - 2 && " and"}
-            </span>
+            </React.Fragment>
           );
         })}
       </span>
