@@ -95,7 +95,7 @@ export const projects: Project[] = [
     isFeatured: true,
     description:
       "An AI-powered tool that helps students and professionals quickly generate formal letters for academic and official use, now enhanced with Gemini API-based personalized content generation.",
-    img: "/projects/vidz-backend.png",
+    img: "/projects/templatz.png",
     links: {
       source: "https://github.com/sonu-shivcharan/templatz",
       viewLive: "https://templatz.vercel.app/",
