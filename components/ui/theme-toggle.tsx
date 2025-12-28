@@ -33,20 +33,17 @@ export default function ThemeToggle() {
   };
 
   const handleToggle = () => {
-    const nextTheme =
-      theme === "light" ? "dark" : theme === "dark" ? "system" : "light"; // cycle: light → dark → system
+    const resolvedTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
+
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
 
     setTheme(nextTheme);
-
-    if (nextTheme === "system") {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      applyTheme(prefersDark ? "dark" : "light");
-    } else {
-      applyTheme(nextTheme);
-    }
-
+    applyTheme(nextTheme);
     localStorage.setItem("theme", nextTheme);
   };
 

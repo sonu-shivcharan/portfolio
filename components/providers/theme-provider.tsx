@@ -16,22 +16,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("system");
   const [mounted, setMounted] = useState(false);
 
+  // Read saved theme
   useEffect(() => {
-    // Avoid SSR issues
     const saved = localStorage.getItem("theme") as Theme | null;
-
     if (saved) {
       setTheme(saved);
-    } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
     }
-
     setMounted(true);
   }, []);
 
+  // Apply theme
   useEffect(() => {
     if (!mounted) return;
 
@@ -46,10 +40,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         : theme;
 
     root.classList.add(appliedTheme);
+
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
 
-  // Prevent hydration mismatch by rendering children only after mount
   if (!mounted) return null;
 
   return (

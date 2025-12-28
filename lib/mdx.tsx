@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
 import remarkGfm from "remark-gfm";
+import { notFound } from "next/navigation";
 type MDXOptions = {
   contentDir: string;
 };
@@ -25,7 +26,9 @@ export function getAllSlugs({ contentDir }: MDXOptions) {
 
 export async function getMDXBySlug(slug: string, { contentDir }: MDXOptions) {
   const filePath = path.join(getDirPath(contentDir), `${slug}.mdx`);
-
+  if (!fs.existsSync(filePath)) {
+    return notFound();
+  }
   const source = fs.readFileSync(filePath, "utf8");
   const { content, data } = matter(source);
 
