@@ -2,6 +2,8 @@ import ProjectSection from "@/components/home/ProjectSection";
 import HeroSection from "@/components/home/HeroSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import EducationSection from "@/components/home/EducationSection";
+import GithubActivity from "@/components/home/GithubActivity";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const Portfolio = () => {
   return (
@@ -9,6 +11,9 @@ const Portfolio = () => {
       <HeroSection />
       <ProjectSection />
       <ExperienceSection />
+      <ThemeProvider>
+        <GithubActivity />
+      </ThemeProvider>
       <EducationSection />
     </>
   );
