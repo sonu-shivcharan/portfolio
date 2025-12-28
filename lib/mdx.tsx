@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
-
+import remarkGfm from "remark-gfm";
 type MDXOptions = {
   contentDir: string;
 };
@@ -30,7 +30,13 @@ export async function getMDXBySlug(slug: string, { contentDir }: MDXOptions) {
   const { content, data } = matter(source);
 
   return {
-    content: <MDXRemote source={content} components={mdxComponents} />,
+    content: (
+      <MDXRemote
+        source={content}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        components={mdxComponents}
+      />
+    ),
     frontmatter: data,
     slug,
   };
