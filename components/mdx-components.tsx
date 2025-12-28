@@ -26,5 +26,22 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
+  table: (props) => (
+    <div className="overflow-x-auto my-6">
+      <table
+        className="w-full border-collapse border border-border text-sm"
+        {...props}
+      />
+    </div>
+  ),
+  thead: (props) => <thead className="bg-muted" {...props} />,
+  th: (props) => (
+    <th
+      className="border border-border px-4 py-2 text-left font-semibold"
+      {...props}
+    />
+  ),
+  td: (props) => <td className="border border-border px-4 py-2" {...props} />,
+  tr: (props) => <tr className="even:bg-muted/50" {...props} />,
   Button,
 };
