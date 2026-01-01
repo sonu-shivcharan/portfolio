@@ -9,8 +9,8 @@ const Portfolio = () => {
   return (
     <>
       <HeroSection />
-      <ProjectSection />
       <ExperienceSection />
+      <ProjectSection />
       <ThemeProvider>
         <GithubActivity />
       </ThemeProvider>
