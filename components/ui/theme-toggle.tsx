@@ -7,7 +7,7 @@ import { Button } from "./button";
 type Theme = "light" | "dark" | "system";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
