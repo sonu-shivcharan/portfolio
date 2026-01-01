@@ -5,8 +5,7 @@ export const PORTFOLIO_DATA = {
   personalInfo: {
     name: "Sonu Shivcharan",
     role: "Full-Stack Web Developer",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4D03AQEuuq5m4lByow/profile-displayphoto-shrink_400_400/B4DZj.V8yNIYAg-/0/1756613824320?e=1766620800&v=beta&t=yUsr82RmaquCSQMSCfPpkjJmvlNv9yLX2qccTVm7qlo",
+    image: "/logos/sonu-shivcharan.jpg",
     contact: [
       {
         name: "Email",
@@ -29,6 +28,8 @@ export const PORTFOLIO_DATA = {
         icon: icons.xtwitter,
       },
     ],
+    resume: "/resume/sonu-shivcharan-resume.pdf",
+    cal: "https://cal.com/sonu-shivcharan/30min",
     location: "Pune, Maharashtra, India",
     summary:
       "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
@@ -47,7 +48,27 @@ export const PORTFOLIO_DATA = {
   },
   experience: [
     {
-      company: "Alaska App Studios, Pvt. Ltd.", //
+      company: {
+        name: "Alaska App Studios, Pvt. Ltd.",
+        location: "Pune, India",
+        links: [
+          {
+            icon: icons.website,
+            url: "https://highwayguard.alaskaa.in/",
+          },
+          {
+            icon: icons.linkedin,
+            url: "https://www.linkedin.com/company/alaska-app-studios-pvt-ltd",
+          },
+        ],
+        tech: [
+          skills.nextjs,
+          skills.reactjs,
+          skills.tailwindcss,
+          skills.firebase,
+        ],
+        logo: "/logos/alaska-logo.png",
+      },
       role: "Web Development Intern", //
       period: "February 2025 - May 2025", //
       type: "Remote", //

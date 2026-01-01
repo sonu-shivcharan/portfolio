@@ -31,7 +31,7 @@ import {
   FaGraduationCap,
   FaRobot,
 } from "react-icons/fa6";
-import { Database, MapPin } from "lucide-react"; // Assuming lucide for MapPin
+import { Database, Globe, MapPin } from "lucide-react"; // Assuming lucide for MapPin
 import { MdAdminPanelSettings } from "react-icons/md";
 
 export const icons = {
@@ -71,7 +71,7 @@ export const icons = {
   resume: SiReaddotcv,
   location: MapPin,
   graduation: FaGraduationCap,
-
+  website: Globe,
   ai: FaRobot,
   admin: MdAdminPanelSettings,
   database: Database,

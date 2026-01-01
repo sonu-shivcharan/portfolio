@@ -30,7 +30,7 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <div className="-mt-6">
         <Image
-          className=""
+          className="w-full"
           src={project.img}
           width={400}
           height={250}
@@ -74,11 +74,24 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default ProjectCard;
 
-function TechStack({ tech }: { tech: Skill[] }) {
+export function TechStack({
+  tech,
+  title = "Technologies",
+  className = "",
+}: {
+  tech: Skill[];
+  title?: string;
+  className?: string;
+}) {
   return (
     <div className="w-full mb-2">
-      <h4 className="text-sm text-muted-foreground mb-2 font-medium">
-        Technologies
+      <h4
+        className={cn(
+          "text-sm text-muted-foreground mb-2 font-medium",
+          className
+        )}
+      >
+        {title}
       </h4>
       <div className="space-x-2">
         {tech.map((t) => (
