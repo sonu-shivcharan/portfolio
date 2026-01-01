@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import React from "react";
+import { Calendar, FileTextIcon } from "lucide-react";
 
 function HeroSection() {
   const personalInfo = PORTFOLIO_DATA.personalInfo;
@@ -14,7 +15,7 @@ function HeroSection() {
     <section className="relative">
       <div className="">
         <div className="space-y-4 flex flex-col md:flex-row gap-4 pt-4 ">
-          <Avatar className="w-28 h-28 my-6">
+          <Avatar className="w-28 h-28 my-6 grayscale-100 hover:grayscale-0 duration-200">
             <AvatarImage
               src={personalInfo.image}
               alt="Sonu Shivcharan"
@@ -40,12 +41,14 @@ function HeroSection() {
         </div>
 
         <div className="pt-8 flex flex-wrap gap-3">
-          <Button variant={"outline"}>
-            Resume <icons.resume />
+          <Button variant={"outline"} asChild>
+            <Link href={personalInfo.resume} target="_blank" rel="noreferrer">
+              <FileTextIcon /> Resume
+            </Link>
           </Button>
           <Button asChild>
-            <Link href={"#"}>
-              <icons.contact /> Contact Me
+            <Link href={personalInfo.cal} target="_blank">
+              <Calendar /> Schedule a Call
             </Link>
           </Button>
         </div>
@@ -90,7 +93,7 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
   if (!techStack?.length) return null;
 
   return (
-    <p className="text-muted-foreground">
+    <p className="text-muted-foreground md:text-lg ">
       I build modern and scalable web applications using
       <span className="inline p-1 font-medium text-foreground">
         {techStack.map((tech, index) => {
@@ -101,13 +104,13 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
             <React.Fragment key={label}>
               <span
                 key={tech}
-                className="inline-flex items-center px-2 mt-1 gap-1 border mx-1 rounded-xl"
+                className="inline-flex text-sm  items-center px-2 mt-1 gap-1 border mx-1 rounded-xl"
               >
                 <Icon className={`h-4 w-4 ${className ?? ""}`} />
                 {label}
               </span>
               {index < techStack.length - 2 && ","}
-              {index === techStack.length - 2 && " and"}
+              {index === techStack.length - 2 && "and"}
             </React.Fragment>
           );
         })}
