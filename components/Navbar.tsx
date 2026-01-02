@@ -7,7 +7,7 @@ import ThemeToggle from "./ui/theme-toggle";
 export default function Navbar() {
   return (
     <div className="w-full sticky top-0 left-0 z-40 bg-transparent p-4 flex items-center">
-      <nav className="max-w-fit mx-auto flex bg-accent/20 items-center justify-center gap-6 border backdrop-blur-xl px-4  rounded-4xl overflow-clip shadow-sm">
+      <nav className="max-w-fit mx-auto flex bg-background/50 items-center justify-center gap-6 border backdrop-blur-xl px-4  rounded-4xl overflow-clip shadow-sm">
         <NavLinkItem href="/" label="Home" />
         <NavLinkItem href="/projects" label="Projects" />
         <NavLinkItem href="/blogs" label="Blogs" />
