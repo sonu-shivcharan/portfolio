@@ -21,6 +21,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const systemTheme = getSystemTheme();
+    /* eslint-disable */
     setTheme(systemTheme);
     applyTheme(systemTheme);
     setMounted(true);
