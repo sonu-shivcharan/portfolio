@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+app/api/callback/route.ts
+app/api/spotify/login/route.ts
