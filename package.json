@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "author": {
+    "name": "Sonu Shivcharan",
+    "url": "https://sonu-shivcharan.vercel.app"
+  },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",

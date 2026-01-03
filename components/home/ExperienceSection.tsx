@@ -20,7 +20,7 @@ function ExperienceSection() {
         {experience.map((exp, idx) => (
           <Card
             key={idx}
-            className="inset-1 bg-transparent border-none p-0 px-0 mx-0 gap-2 "
+            className="inset-1 bg-transparent border-none shadow-none p-0 px-0 mx-0 gap-2 "
           >
             <CardHeader className="px-2 py-0 mb-0 pb-0 ">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center ">

@@ -56,14 +56,15 @@ export default function SpotifyStatusCard() {
   if (error) return null;
   if (loading) {
     return (
-      <Card className="w-full mx-auto">
-        <CardContent className="    ">
+      <Card className="w-full shadow-sm mx-auto">
+        <CardContent>
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-zinc-800 rounded-md animate-pulse" />
+            <div className="w-16 h-16 rounded-md bg-muted animate-pulse" />
+
             <div className="flex-1 space-y-2">
-              <div className="h-3 bg-zinc-800 rounded animate-pulse w-20" />
-              <div className="h-4 bg-zinc-800 rounded animate-pulse w-32" />
-              <div className="h-3 bg-zinc-800 rounded animate-pulse w-24" />
+              <div className="h-3 w-20 rounded bg-muted animate-pulse" />
+              <div className="h-4 w-32 rounded bg-muted animate-pulse" />
+              <div className="h-3 w-24 rounded bg-muted animate-pulse" />
             </div>
           </div>
         </CardContent>
@@ -72,7 +73,7 @@ export default function SpotifyStatusCard() {
   }
   if (!nowPlaying && !recent) return null;
   return (
-    <Card className="w-full mx-auto bg-zinc-900/50 border-zinc-800 hover:bg-zinc-900/70 transition-colors">
+    <Card className="w-full mx-auto transition-colors">
       <CardContent>
         <a
           href={nowPlaying?.url || recent?.url}
@@ -113,7 +114,7 @@ export default function SpotifyStatusCard() {
               </p>
             </div>
 
-            <p className="font-semibold text-white truncate group-hover:text-green-400 transition-colors">
+            <p className="font-semibold text-accent-foreground truncate group-hover:text-green-400 transition-colors">
               {nowPlaying?.name || recent?.name}
             </p>
 
