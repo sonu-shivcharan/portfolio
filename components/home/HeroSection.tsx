@@ -72,8 +72,8 @@ function HeroSection() {
                   <AnalyticsLink
                     href={contact.link}
                     target="_blank"
-                    action={`click_${contact.name}`}
-                    label={`${contact.name}`}
+                    action={`click_contact`}
+                    label={`Contact link - ${contact.name}`}
                   >
                     <contact.icon className="h-4 w-4" />
                   </AnalyticsLink>
