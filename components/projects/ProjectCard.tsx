@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Project, ProjectStatus, Skill } from "@/data/projects/projects";
 import Image from "next/image";
+import AnalyticsButton from "../analytics/AnalyticsButton";
 
 function ProjectCard({ project }: { project: Project }) {
   const slug = project.title.split(" ").join("-").toLowerCase();
@@ -41,7 +42,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div>
           <CardTitle className="text-xl flex items-center justify-between w-full">
             {project.title}
-            <ProjectLinks links={project.links} />
+            <ProjectLinks links={project.links} projectTitle={project.title} />
           </CardTitle>
           <CardDescription className="mt-1 text-base">
             {project.subtitle}
@@ -143,24 +144,39 @@ export function ProjectStatusBadge({
 }
 function ProjectLinks({
   links,
+  projectTitle,
 }: {
   links: { source: string | null; viewLive: string | null };
+  projectTitle: string;
 }) {
   return (
     <div>
       {links.source && (
-        <Button variant={"link"} asChild>
-          <Link href={links.source} target="_blank">
-            <icons.github />
-          </Link>
-        </Button>
+        <AnalyticsButton
+          action="click_source_code"
+          category="outbound"
+          label={`GitHub Source - ${projectTitle}`}
+        >
+          <Button variant="link" asChild>
+            <Link href={links.source} target="_blank">
+              <icons.github />
+            </Link>
+          </Button>
+        </AnalyticsButton>
       )}
+
       {links.viewLive && (
-        <Button variant={"link"} asChild>
-          <Link href={links.viewLive} target="_blank">
-            <ArrowUpRightSquareIcon />
-          </Link>
-        </Button>
+        <AnalyticsButton
+          action="click_live_demo"
+          category="outbound"
+          label={`Live Project - ${projectTitle}`}
+        >
+          <Button variant="link" asChild>
+            <Link href={links.viewLive} target="_blank">
+              <ArrowUpRightSquareIcon />
+            </Link>
+          </Button>
+        </AnalyticsButton>
       )}
     </div>
   );

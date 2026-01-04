@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import React from "react";
 import { Calendar, FileTextIcon } from "lucide-react";
+import { AnalyticsLink } from "../analytics/AnalyticsLink";
+import AnalyticsButton from "../analytics/AnalyticsButton";
 
 function HeroSection() {
   const personalInfo = PORTFOLIO_DATA.personalInfo;
@@ -41,16 +43,22 @@ function HeroSection() {
         </div>
 
         <div className="pt-8 flex flex-wrap gap-3">
-          <Button variant={"outline"} asChild>
-            <Link href={personalInfo.resume} target="_blank" rel="noreferrer">
-              <FileTextIcon /> Resume
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link href={personalInfo.cal} target="_blank">
-              <Calendar /> Schedule a Call
-            </Link>
-          </Button>
+          <AnalyticsButton action="download_resume" label="Resume PDF">
+            <Button variant={"outline"} asChild>
+              <Link href={personalInfo.resume} target="_blank" rel="noreferrer">
+                <FileTextIcon /> Resume
+              </Link>
+            </Button>
+          </AnalyticsButton>
+
+          <AnalyticsButton action="schedule_call" label="Meeting on Cal">
+            <Button asChild>
+              <Link href={personalInfo.cal} target="_blank">
+                <Calendar className="mr-2" />
+                Schedule a Call
+              </Link>
+            </Button>
+          </AnalyticsButton>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-4">
@@ -61,9 +69,14 @@ function HeroSection() {
               </TooltipContent>
               <TooltipTrigger>
                 <Button key={contact.link} variant="outline" asChild>
-                  <Link href={contact.link} target="_blank" rel="noreferrer">
+                  <AnalyticsLink
+                    href={contact.link}
+                    target="_blank"
+                    action={`click_${contact.name}`}
+                    label={`${contact.name}`}
+                  >
                     <contact.icon className="h-4 w-4" />
-                  </Link>
+                  </AnalyticsLink>
                 </Button>
               </TooltipTrigger>
             </Tooltip>
