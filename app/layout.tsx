@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { PORTFOLIO_DATA } from "@/data/data";
+import Script from "next/script";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     "TypeScript",
     "Node.js",
     "MongoDB",
-    "Portfolio"
+    "Portfolio",
   ],
   authors: [{ name: PORTFOLIO_DATA.personalInfo.name }],
   creator: PORTFOLIO_DATA.personalInfo.name,
@@ -67,6 +69,25 @@ export default function RootLayout({
           </main>
         </div>
         <Footer />
+        <GoogleAnalytics />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
