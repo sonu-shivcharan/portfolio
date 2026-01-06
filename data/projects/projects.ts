@@ -60,7 +60,7 @@ export const projects: Project[] = [
       "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.",
     img: "/projects/krishi-sahayak.png",
     links: {
-      source: null,
+      source: "https://github.com/sonu-shivcharan/krishi-sahayak",
       viewLive: "https://ai-farmer-mu.vercel.app",
     },
   },
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     img: "/projects/vidz-backend.png",
     links: {
       source: "https://github.com/sonu-shivcharan/vidz-backend",
-      viewLive: null,
+      viewLive: "https://tiffinz-dev.vercel.app/",
     },
   },
   {
