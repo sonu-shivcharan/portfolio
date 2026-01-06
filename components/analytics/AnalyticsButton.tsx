@@ -1,26 +1,36 @@
 "use client";
 
-import { ReactNode } from "react";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import { gaEvent } from "@/lib/gaEvents";
 
-type AnalyticsButtonProps = {
-  children: ReactNode;
-  action: string;
-  category?: string;
-  label?: string;
-  value?: number;
-  onClick?: () => void;
-};
+type AnalyticsButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+    action: string;
+    category?: string;
+    label?: string;
+    value?: number;
+  };
 
 export default function AnalyticsButton({
-  children,
+  className,
+  variant,
+  size,
+  asChild = false,
   action,
   category = "engagement",
   label,
   value,
   onClick,
+  ...props
 }: AnalyticsButtonProps) {
-  const handleClick = () => {
+  const Comp = asChild ? Slot : "button";
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     gaEvent({
       action,
       category,
@@ -28,8 +38,15 @@ export default function AnalyticsButton({
       value,
     });
 
-    onClick?.();
+    onClick?.(e);
   };
 
-  return <span onClick={handleClick}>{children}</span>;
+  return (
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      onClick={handleClick}
+      {...props}
+    />
+  );
 }
