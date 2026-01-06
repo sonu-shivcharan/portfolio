@@ -2,12 +2,14 @@
 
 import Link, { LinkProps } from "next/link";
 import { gaEvent } from "@/lib/gaEvents";
+import { AnchorHTMLAttributes } from "react";
 
-interface AnalyticsLinkProps extends LinkProps {
+interface AnalyticsLinkProps
+  extends LinkProps,
+    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
   children: React.ReactNode;
   action: string;
   label?: string;
-  target?: string;
 }
 
 export function AnalyticsLink({
@@ -16,17 +18,16 @@ export function AnalyticsLink({
   children,
   ...linkProps
 }: AnalyticsLinkProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    gaEvent({
+      action,
+      category: "outbound",
+      label,
+    });
+  };
+
   return (
-    <Link
-      {...linkProps}
-      onClick={() =>
-        gaEvent({
-          action,
-          category: "outbound",
-          label,
-        })
-      }
-    >
+    <Link {...linkProps} onClick={handleClick}>
       {children}
     </Link>
   );
