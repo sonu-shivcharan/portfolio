@@ -2,13 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PORTFOLIO_DATA } from "@/data/data";
 import { icons } from "@/lib/icons";
-import Link from "next/link";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import React from "react";
 import { Calendar, FileTextIcon } from "lucide-react";
 import { AnalyticsLink } from "../analytics/AnalyticsLink";
-import AnalyticsButton from "../analytics/AnalyticsButton";
 
 function HeroSection() {
   const personalInfo = PORTFOLIO_DATA.personalInfo;
@@ -43,22 +41,28 @@ function HeroSection() {
         </div>
 
         <div className="pt-8 flex flex-wrap gap-3">
-          <AnalyticsButton action="download_resume" label="Resume PDF">
-            <Button variant={"outline"} asChild>
-              <Link href={personalInfo.resume} target="_blank" rel="noreferrer">
-                <FileTextIcon /> Resume
-              </Link>
-            </Button>
-          </AnalyticsButton>
+          <AnalyticsLink
+            href={personalInfo.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            action="download_resume"
+            label="Resume PDF"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3"
+          >
+            <FileTextIcon /> Resume
+          </AnalyticsLink>
 
-          <AnalyticsButton action="schedule_call" label="Meeting on Cal">
-            <Button asChild>
-              <Link href={personalInfo.cal} target="_blank">
-                <Calendar className="mr-2" />
-                Schedule a Call
-              </Link>
-            </Button>
-          </AnalyticsButton>
+          <AnalyticsLink
+            href={personalInfo.cal}
+            target="_blank"
+            rel="noopener noreferrer"
+            action="schedule_call"
+            label="Meeting on Cal"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3"
+          >
+            <Calendar className="mr-2" />
+            Schedule a Call
+          </AnalyticsLink>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-4">
@@ -68,16 +72,16 @@ function HeroSection() {
                 <p>{contact.name}</p>
               </TooltipContent>
               <TooltipTrigger>
-                <Button key={contact.link} variant="outline" asChild>
-                  <AnalyticsLink
-                    href={contact.link}
-                    target="_blank"
-                    action={`click_contact`}
-                    label={`Contact link - ${contact.name}`}
-                  >
-                    <contact.icon className="h-4 w-4" />
-                  </AnalyticsLink>
-                </Button>
+                <AnalyticsLink
+                  href={contact.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  action={`click_contact`}
+                  label={`Contact link - ${contact.name}`}
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9"
+                >
+                  <contact.icon className="h-4 w-4" />
+                </AnalyticsLink>
               </TooltipTrigger>
             </Tooltip>
           ))}

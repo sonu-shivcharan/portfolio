@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Project, ProjectStatus, Skill } from "@/data/projects/projects";
 import Image from "next/image";
-import AnalyticsButton from "../analytics/AnalyticsButton";
+import { AnalyticsLink } from "../analytics/AnalyticsLink";
 
 function ProjectCard({ project }: { project: Project }) {
   const slug = project.title.split(" ").join("-").toLowerCase();
@@ -152,31 +152,29 @@ function ProjectLinks({
   return (
     <div>
       {links.source && (
-        <AnalyticsButton
+        <AnalyticsLink
+          href={links.source}
+          target="_blank"
+          rel="noopener noreferrer"
           action="click_source_code"
-          category="outbound"
           label={`GitHub Source - ${projectTitle}`}
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 text-primary underline-offset-4 hover:underline size-9"
         >
-          <Button variant="link" asChild>
-            <Link href={links.source} target="_blank">
-              <icons.github />
-            </Link>
-          </Button>
-        </AnalyticsButton>
+          <icons.github />
+        </AnalyticsLink>
       )}
 
       {links.viewLive && (
-        <AnalyticsButton
+        <AnalyticsLink
+          href={links.viewLive}
+          target="_blank"
+          rel="noopener noreferrer"
           action="click_live_demo"
-          category="outbound"
           label={`Live Project - ${projectTitle}`}
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 text-primary underline-offset-4 hover:underline size-9"
         >
-          <Button variant="link" asChild>
-            <Link href={links.viewLive} target="_blank">
-              <ArrowUpRightSquareIcon />
-            </Link>
-          </Button>
-        </AnalyticsButton>
+          <ArrowUpRightSquareIcon />
+        </AnalyticsLink>
       )}
     </div>
   );
