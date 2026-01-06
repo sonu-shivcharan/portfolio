@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Play, Music } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
@@ -73,8 +72,8 @@ export default function SpotifyStatusCard() {
   }
   if (!nowPlaying && !recent) return null;
   return (
-    <Card className="w-full mx-auto transition-colors">
-      <CardContent>
+    <Card className="w-full mx-auto transition-colors py-4 border-none">
+      <CardContent className="py-0">
         <a
           href={nowPlaying?.url || recent?.url}
           target="_blank"
@@ -87,7 +86,7 @@ export default function SpotifyStatusCard() {
               height={64}
               src={nowPlaying?.image || recent?.image || ""}
               alt="Album art"
-              className="w-16 h-16 rounded-lg shadow-lg"
+              className="w-18 h-18 rounded-lg shadow-lg"
             />
             <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               {nowPlaying?.isPlaying ? (
@@ -100,14 +99,20 @@ export default function SpotifyStatusCard() {
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <div
-                className={cn(
-                  "w-2 h-2 rounded-full",
-                  nowPlaying?.isPlaying
-                    ? "bg-green-500 animate-pulse"
-                    : "bg-zinc-500"
+              <span className="relative flex size-2">
+                {nowPlaying?.isPlaying ? (
+                  <>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex size-2 rounded-full bg-green-500"></span>
+                  </>
+                ) : (
+                  <>
+                    {/* <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span> */}
+                    <span className="relative inline-flex size-2 rounded-full bg-gray-400 dark:bg-gray-700"></span>
+                  </>
                 )}
-              />
+              </span>
+
               <p className="flex gap-2 items-center text-xs uppercase tracking-wide font-medium text-green-500">
                 {nowPlaying ? "Now Playing" : "Last Played"} on{" "}
                 <SiSpotify className="text-green-500" />
@@ -124,7 +129,7 @@ export default function SpotifyStatusCard() {
 
             {nowPlaying?.isPlaying &&
               nowPlaying.progressPercent !== undefined && (
-                <div className="mt-3 h-1 w-full bg-zinc-700 rounded-full overflow-hidden">
+                <div className="mt-3 h-1 w-full bg-zinc-100 dark:bg-zinc-700 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-green-500 rounded-full transition-all duration-1000"
                     style={{ width: `${nowPlaying.progressPercent}%` }}
