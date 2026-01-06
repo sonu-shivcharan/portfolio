@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PORTFOLIO_DATA } from "@/data/data";
 import { icons } from "@/lib/icons";

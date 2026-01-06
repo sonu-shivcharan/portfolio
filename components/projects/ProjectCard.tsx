@@ -11,7 +11,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { icons } from "@/lib/icons";
-import { ArrowRight, ArrowUpRightSquareIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -152,29 +152,33 @@ function ProjectLinks({
   return (
     <div>
       {links.source && (
-        <AnalyticsLink
-          href={links.source}
-          target="_blank"
-          rel="noopener noreferrer"
-          action="click_source_code"
-          label={`GitHub Source - ${projectTitle}`}
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 text-primary underline-offset-4 hover:underline size-9"
-        >
-          <icons.github />
-        </AnalyticsLink>
+        <Button variant="link" size="icon" asChild>
+          <AnalyticsLink
+            href={links.source}
+            target="_blank"
+            rel="noopener noreferrer"
+            action="click_source_code"
+            label={`GitHub Source - ${projectTitle}`}
+            title="view source"
+          >
+            <icons.github />
+          </AnalyticsLink>
+        </Button>
       )}
 
       {links.viewLive && (
-        <AnalyticsLink
-          href={links.viewLive}
-          target="_blank"
-          rel="noopener noreferrer"
-          action="click_live_demo"
-          label={`Live Project - ${projectTitle}`}
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 text-primary underline-offset-4 hover:underline size-9"
-        >
-          <ArrowUpRightSquareIcon />
-        </AnalyticsLink>
+        <Button variant="link" size="icon" asChild>
+          <AnalyticsLink
+            href={links.viewLive}
+            target="_blank"
+            rel="noopener noreferrer"
+            action="click_live_demo"
+            label={`Live Project - ${projectTitle}`}
+            title="view live"
+          >
+            <icons.website />
+          </AnalyticsLink>
+        </Button>
       )}
     </div>
   );
