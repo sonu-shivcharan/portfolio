@@ -31,6 +31,7 @@ export const projects: Project[] = [
       skills.mongodb,
       skills.redux,
       skills.rbac,
+      skills.reactQuery,
     ],
     period: "May 2025 - Present",
     isFeatured: true,
