@@ -22,6 +22,7 @@ import {
   SiSupabase,
   SiHtml5,
   SiCss3,
+  SiReactquery,
 } from "react-icons/si";
 import {
   FaLinkedin,
@@ -46,6 +47,7 @@ export const icons = {
   mongodb: SiMongodb,
   tailwindcss: SiTailwindcss,
   redux: SiRedux,
+  reactQuery: SiReactquery,
 
   //tools & services
   git: SiGit,

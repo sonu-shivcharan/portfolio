@@ -117,4 +117,9 @@ export const skills = {
     icon: icons.postman,
     className: "text-orange-500 dark:text-orange-400",
   },
+  reactQuery: {
+    name: "React Query",
+    icon: icons.reactQuery,
+    className: "text-red-600 dark:text-red-500",
+  },
 };
