@@ -80,7 +80,7 @@ export const skills = {
   javascript: {
     name: "JavaScript",
     icon: icons.javascript,
-    className: "text-yellow-500 dark:text-yellow-400",
+    className: "text-yellow-300 bg-black dark:text-yellow-300",
   },
   redux: {
     name: "Redux",
@@ -115,7 +115,8 @@ export const skills = {
   postman: {
     name: "Postman",
     icon: icons.postman,
-    className: "text-orange-500 dark:text-orange-400",
+    className:
+      "text-orange-500 dark:text-orange-500 dark:bg-white rounded-full",
   },
   reactQuery: {
     name: "React Query",

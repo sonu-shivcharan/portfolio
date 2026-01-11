@@ -33,19 +33,25 @@ export const PORTFOLIO_DATA = {
     location: "Pune, Maharashtra, India",
     summary:
       "I build modern, fast, and scalable web applications using Next.js,React.js,TypeScript,Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
+    aboutSummary: "",
   },
-  skills: {
-    languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"], //
-    frameworks: ["React.js", "Next.js", "Node.js"], //
-    tools: [
-      "Git/Github",
-      "Docker",
-      "Google Cloud Platform",
-      "Postman",
-      "MongoDB Atlas",
-      "QdrantDB",
-    ],
-  },
+  skills: [
+    skills.html,
+    skills.css,
+    skills.javascript,
+    skills.typescript,
+    skills.reactjs,
+    skills.nextjs,
+    skills.tailwindcss,
+    skills.firebase,
+    skills.reactQuery,
+    skills.redux,
+    skills.nodejs,
+    skills.express,
+    skills.mongodb,
+    skills.docker,
+    skills.postman,
+  ],
   experience: [
     {
       company: {
