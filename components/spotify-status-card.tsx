@@ -72,8 +72,8 @@ export default function SpotifyStatusCard() {
   }
   if (!nowPlaying && !recent) return null;
   return (
-    <Card className="w-full mx-auto transition-colors py-4 border-none">
-      <CardContent className="py-0">
+    <Card className="w-full mx-auto transition-colors py-4">
+      <CardContent className="py-0 px-4">
         <a
           href={nowPlaying?.url || recent?.url}
           target="_blank"
@@ -123,7 +123,7 @@ export default function SpotifyStatusCard() {
               {nowPlaying?.name || recent?.name}
             </p>
 
-            <p className="text-sm text-zinc-400 truncate">
+            <p className="text-sm text-muted-foreground font-medium truncate">
               {nowPlaying?.artists || recent?.artists}
             </p>
 
