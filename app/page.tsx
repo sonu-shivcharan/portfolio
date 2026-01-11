@@ -4,8 +4,8 @@ import ExperienceSection from "@/components/home/ExperienceSection";
 import EducationSection from "@/components/home/EducationSection";
 import GithubActivity from "@/components/home/GithubActivity";
 import SpotifyStatusCard from "@/components/spotify-status-card";
-
-const Portfolio = () => {
+import AboutSection from "@/components/home/AboutSection";
+function MainPage() {
   return (
     <>
       <HeroSection />
@@ -13,9 +13,10 @@ const Portfolio = () => {
       <ExperienceSection />
       <ProjectSection />
       <GithubActivity />
+      <AboutSection />
       <EducationSection />
     </>
   );
-};
+}
 
-export default Portfolio;
+export default MainPage;

@@ -79,10 +79,12 @@ export function TechStack({
   tech,
   title = "Technologies",
   className = "",
+  iconsStyles = "",
 }: {
   tech: Skill[];
   title?: string;
   className?: string;
+  iconsStyles?: string;
 }) {
   return (
     <div className="w-full mb-2">
@@ -107,7 +109,9 @@ export function TechStack({
                 <p>{t.name}</p>
               </TooltipContent>
               <TooltipTrigger>
-                <t.icon className={`w-6 h-6 mr-1 ${t.className}`} />
+                <t.icon
+                  className={cn("w-6 h-6 mr-1", t.className, iconsStyles)}
+                />
               </TooltipTrigger>
             </Tooltip>
           </Badge>
