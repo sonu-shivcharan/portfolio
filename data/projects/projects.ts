@@ -77,7 +77,7 @@ export const projects: Project[] = [
     img: "/projects/vidz-backend.png",
     links: {
       source: "https://github.com/sonu-shivcharan/vidz-backend",
-      viewLive: "https://tiffinz-dev.vercel.app/",
+      viewLive: "https://github.com/sonu-shivcharan/vidz-backend",
     },
   },
   {
