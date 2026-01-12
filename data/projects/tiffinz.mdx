@@ -16,131 +16,183 @@ techStack:
   - ShadCN UI
 ---
 
-# Tiffinz — Case Study
+# **Building Tiffinz: A Real-World Full-Stack System for Managing a Scalable Tiffin Service**
 
-## Overview
-
-**Tiffinz** is a full-stack web application designed to modernize the way local tiffin services operate.  
-The platform focuses on automating meal tracking, wallet management, and delivery workflows while keeping the system simple for both users and administrators.
+_Role: Full-Stack Developer | Timeline: 2025 – Present_
 
 ---
 
-## Problem
+## Why I Built Tiffinz
 
-Most local tiffin services manage their operations using:
+Tiffinz started with a real operational problem.
 
-- Manual registers
-- WhatsApp messages
-- Verbal confirmations
+My mother runs a local tiffin service and managed customer balances using handwritten cards.
+Each card tracked meals taken and remaining balance, calculated manually.
 
-This approach leads to:
+As the customer base grew, this approach became increasingly fragile:
 
-- Payment tracking errors
-- No clear wallet balance for users
-- Difficulty handling cancellations and adjustments
-- Poor scalability as the number of customers grows
+- Manual calculations led to frequent errors
+- Customers had no visibility into their balance or meal history
+- Cancellations were hard to adjust accurately
+- The system did not scale beyond a small customer set
 
----
-
-## Goal
-
-The goal of Tiffinz was to:
-
-- Provide transparent wallet and transaction tracking
-- Automate daily meal status updates
-- Simplify admin operations
-- Build a system that can scale from a small vendor to multiple services
+I saw this as an opportunity to solve a **real business problem using production-grade engineering**, not just build a demo app.
 
 ---
 
-## My Role
+## Defining the Problem Like an Engineer
 
-I worked as a **Full-Stack Developer**, responsible for:
+Instead of immediately jumping into code, I broke the problem down into system requirements:
 
-- System design and feature planning
-- Frontend development using Next.js
-- Backend APIs and database modeling
-- Authentication and authorization
-- Deployment and environment configuration
+- A **transparent wallet system** with transaction history
+- **Daily meal tracking** with support for cancellations
+- Clear separation of **user and admin responsibilities**
+- A backend flexible enough to evolve without breaking data consistency
+- Cost-effective infrastructure suitable for small businesses
+
+These constraints guided every technical decision that followed.
 
 ---
 
-## Solution
+## Designing the System
 
-Tiffinz introduces a centralized platform where users and admins interact through well-defined workflows.
+I designed Tiffinz as a **role-based full-stack platform** with clearly defined workflows.
 
-### User Features
+### Key Design Decisions
+
+- **Wallet-first architecture**: Every meal, cancellation, or payment is reflected as a transaction
+- **Admin-controlled verification**: Prevents incorrect wallet credits
+- **Schema designed for analytics**: Enables future reporting without migrations
+- **Free-tier friendly**: Optimized for MongoDB Atlas and serverless deployments
+
+This ensured correctness first, while leaving room for scale.
+
+---
+
+## What I Built
+
+### User Experience
+
+Users can:
 
 - View daily tiffin status and upcoming meals
-- Track wallet balance and transaction history
-- Request balance top-ups
-- Cancel meals with predefined charges
+- Track wallet balance with complete transaction history
+- Request wallet top-ups
+- Cancel meals with predefined charges applied automatically
 
-### Admin Features
-
-- Manual verification of payments
-- User and wallet management
-- Meal scheduling and delivery tracking
-- Transaction monitoring
+This shifted trust from verbal confirmations to **data-backed transparency**.
 
 ---
 
-## Technical Architecture
+### Admin Experience
+
+Admins can:
+
+- Verify payments manually before wallet credit
+- Manage users and wallet balances
+- Schedule meals and track delivery status
+- Monitor all financial transactions from a single dashboard
+
+Admin actions are protected both at the UI and API level.
+
+---
+
+## Technical Implementation
 
 ### Frontend
 
-- Built using **Next.js App Router**
-- Tailwind CSS and ShadCN UI for consistent design
-- Server-side rendering for better performance and SEO
+- **Next.js App Router** with server-side rendering
+- **TypeScript** for safer data handling
+- **Tailwind CSS + ShadCN UI** for consistent, reusable UI components
+- Optimized layouts for admin dashboards and data-heavy views
+
+---
 
 ### Backend
 
-- Next.js API routes
-- Secure role-based access for admin actions
-- Environment variables for sensitive configuration
-
-### Database
-
-- MongoDB Atlas (free tier)
-- Well-structured collections for users, wallets, transactions, and meals
-- Designed to support future analytics and reporting
-
-### Authentication
-
-- Firebase Authentication
-- Admin-only routes protected at both UI and API levels
+- API routes implemented within Next.js
+- Role-based access control enforced server-side
+- Environment-based configuration for secure secrets handling
 
 ---
 
-## Challenges Faced
+### Database Design
 
-- Designing a flexible wallet system that supports daily, weekly, and monthly payments
-- Preventing unauthorized access to admin routes
-- Handling cancellations without breaking meal and balance consistency
-- Working within free-tier limitations while keeping the system scalable
+<ImageModal src="/projects/tiffinz-schema-design.svg" alt="" />
 
 ---
 
-## What I Learned
+## Challenges & Engineering Trade-offs
 
-- Designing real-world data models
-- Managing role-based authorization in a production app
-- Structuring a full-stack project for scalability
-- Balancing feature requirements with performance and cost constraints
+### 1. Wallet Consistency
+
+Designing a system where cancellations, refunds, and daily deductions never desync the balance required careful transaction modeling.
+
+**Solution:**
+A transaction-driven wallet system where balance is derived from controlled updates.
 
 ---
 
-## Future Scope
+### 2. Authorization Safety
+
+Admin routes expose sensitive financial data.
+
+**Solution:**
+Dual-layer protection:
+
+- Frontend route guards
+- Backend role validation in every admin API
+
+---
+
+### 3. Scaling on Free Infrastructure
+
+The system needed to stay usable without paid services.
+
+**Solution:**
+Efficient schema design, serverless APIs, and minimal write operations.
+
+---
+
+## Impact
+
+- Eliminated manual balance calculations
+- Improved customer trust through transparency
+- Reduced admin effort in daily operations
+- Created a foundation that can scale beyond a single service provider
+
+This is not a toy project—it’s a **production-ready system solving a real business need**.
+
+---
+
+## What This Project Demonstrates to Recruiters
+
+- Ability to translate real-world problems into scalable software
+- Strong understanding of full-stack architecture
+- Practical experience with role-based systems
+- Thoughtful database and API design
+- Ownership from ideation to deployment
+
+---
+
+## What’s Next
 
 - Mobile application support
 - Notification system for meal updates
 - Online payment gateway integration
-- Monthly usage and revenue analytics
-- Multi-vendor support
+- Monthly revenue and usage analytics
 
 ---
 
-## Project Links
+## Closing Thoughts
 
-- [View All Projects](/projects)
-- [Contact Me](/contact)
+Tiffinz represents how I approach engineering problems:
+**start with reality, design for correctness, and build for growth**.
+
+This project continues to evolve as I refine both the product and my skills as a full-stack developer.
+
+---
+
+## **TL;DR:**
+
+Built a real-world, production-ready full-stack platform to manage a local tiffin service, focusing on wallet transparency, meal tracking, and secure admin workflows. Designed with scalability in mind using Next.js, TypeScript, and MongoDB, and is actively maintained with ongoing feature additions and bug fixes.
