@@ -48,6 +48,19 @@ export default async function ProjectDetailsPage(props: {
           className="object-cover object-top"
         />
       </div>
+
+      <div className="my-4 space-x-2">
+        <Button variant="default" asChild>
+          <a href={frontmatter.live} target="_blank" rel="noreferrer">
+            View Live Demo
+          </a>
+        </Button>
+        <Button variant="outline" asChild>
+          <a href={frontmatter.github} target="_blank" rel="noreferrer">
+            View GitHub Repo
+          </a>
+        </Button>
+      </div>
       <div>
         {techStack && (
           <div className="mb-4">
@@ -60,18 +73,6 @@ export default async function ProjectDetailsPage(props: {
             </div>
           </div>
         )}
-      </div>
-      <div className="my-4 space-x-2">
-        <Button variant="default" asChild>
-          <a href={frontmatter.live} target="_blank" rel="noreferrer">
-            View Live Demo
-          </a>
-        </Button>
-        <Button variant="outline" asChild>
-          <a href={frontmatter.github} target="_blank" rel="noreferrer">
-            View GitHub Repo
-          </a>
-        </Button>
       </div>
       <div>{mdx}</div>
     </article>
