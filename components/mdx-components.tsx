@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
 import { Button } from "./ui/button";
+import Image from "next/image";
+import { ImageModal } from "./ui/image-modal";
 
 export const mdxComponents: MDXComponents = {
   a: ({ href, children }) => (
@@ -43,5 +45,15 @@ export const mdxComponents: MDXComponents = {
   ),
   td: (props) => <td className="border border-border px-4 py-2" {...props} />,
   tr: (props) => <tr className="even:bg-muted/50" {...props} />,
+  img: (props) => (
+    <Image
+      className="max-w-full h-auto rounded-lg my-4"
+      {...props}
+      alt=""
+      width={700}
+      height={400}
+    />
+  ),
+  ImageModal,
   Button,
 };
