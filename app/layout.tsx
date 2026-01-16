@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: `${PORTFOLIO_DATA.personalInfo.name} - ${PORTFOLIO_DATA.personalInfo.role}`,
     description: PORTFOLIO_DATA.personalInfo.summary,
     creator: "@SonuShivcharan",
-    images: ["/summary_card.png"],
+    images: ["https://sonu.drudh.tech/summary_card.png"],
   },
   robots: {
     index: true,
