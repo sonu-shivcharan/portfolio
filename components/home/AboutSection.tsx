@@ -18,9 +18,9 @@ function AboutSection() {
     <section>
       <h2 className="text-2xl font-bold tracking-tight">About</h2>
 
-      <Card className="my-4">
+      <Card className="gap-2">
         <CardHeader>
-          <div className="flex flex-col justify-center md:justify-normal md:flex-row md:items-center gap-4 rounded-2xl">
+          <div className="flex flex-col justify-center md:justify-normal md:flex-row md:items-center gap-2 rounded-2xl">
             <Avatar className="w-28 h-28 grayscale-100 hover:grayscale-0 duration-200">
               <AvatarImage
                 src={personalInfo.image}
@@ -45,7 +45,7 @@ function AboutSection() {
 
           {/* <CardAction>Card Action</CardAction> */}
         </CardHeader>
-        <CardContent>
+        <CardContent className="">
           <CardDescription>{personalInfo.summary}</CardDescription>
           <TechStack
             title="Tools & Technologies"
