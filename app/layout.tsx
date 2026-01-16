@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL!),
   title: `${PORTFOLIO_DATA.personalInfo.name} - ${PORTFOLIO_DATA.personalInfo.role}`,
   description: PORTFOLIO_DATA.personalInfo.summary,
   keywords: [
@@ -45,7 +46,14 @@ export const metadata: Metadata = {
     title: `${PORTFOLIO_DATA.personalInfo.name} - ${PORTFOLIO_DATA.personalInfo.role}`,
     description: PORTFOLIO_DATA.personalInfo.summary,
     creator: "@SonuShivcharan",
-    images: ["https://sonu.drudh.tech/summary_card.png"],
+    images: [
+      {
+        url: "/summary_card.png",
+        width: 893,
+        height: 474,
+        alt: "Portfolio summary card",
+      },
+    ],
   },
   robots: {
     index: true,
