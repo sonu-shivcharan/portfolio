@@ -69,7 +69,7 @@ export const projects: Project[] = [
     title: "Vidz Backend",
     subtitle: "Video Sharing Platform API",
     tech: [skills.nodejs, skills.express, skills.mongodb, skills.cloudinary],
-    status: ["building", "Building"],
+    status: ["building", "Building frontend"],
     period: "April 2025 - May 2025",
     isFeatured: true,
     description:
