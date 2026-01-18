@@ -5,6 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
 import remarkGfm from "remark-gfm";
 import { notFound } from "next/navigation";
+import rehypeStarryNight from "rehype-starry-night";
 type MDXOptions = {
   contentDir: string;
 };
@@ -36,7 +37,12 @@ export async function getMDXBySlug(slug: string, { contentDir }: MDXOptions) {
     content: (
       <MDXRemote
         source={content}
-        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [[rehypeStarryNight, { ignoreMissing: true }]],
+          },
+        }}
         components={mdxComponents}
       />
     ),
