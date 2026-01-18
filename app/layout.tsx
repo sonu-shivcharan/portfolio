@@ -80,24 +80,25 @@ export default function RootLayout({
         </div>
         <Footer />
         <GoogleAnalytics />
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
+        {process.env.NODE_ENV === "production" &&
+          process.env.NEXT_PUBLIC_GA_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="ga4" strategy="afterInteractive">
+                {`window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_path: window.location.pathname,
-                });
+                page_path: window.location.pathname,
+              });
+              console.log("test");
               `}
-            </Script>
-          </>
-        )}
+              </Script>
+            </>
+          )}
       </body>
     </html>
   );
