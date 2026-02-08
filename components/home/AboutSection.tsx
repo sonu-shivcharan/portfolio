@@ -16,7 +16,7 @@ function AboutSection() {
 
   return (
     <section>
-      <h2 className="text-2xl font-bold tracking-tight">About</h2>
+      <h2 className="text-2xl font-bold tracking-tight py-4">About</h2>
 
       <Card className="gap-2">
         <CardHeader>

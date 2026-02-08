@@ -35,19 +35,19 @@ export const projects: Project[] = [
     ],
     period: "May 2025 - Present",
     isFeatured: true,
-    status: ["working", "Currently Improving"],
+    status: ["working", "All Systems Operational"],
     description:
       "Full-stack meal tracking system implemented with user-facing features including daily tiffin status, wallet balance tracking, and detailed transaction history.",
     img: "/projects/tiffinz.png",
     links: {
       source: "https://github.com/sonu-shivcharan/tiffinz",
-      viewLive: null,
+      viewLive: "https://tiffinz-dev.vercel.app",
     },
   },
   {
     title: "Krishi Sahayak",
     subtitle: "AI-Powered Farmer Support",
-    status: ["building", "Prototype"],
+    status: ["building", "Building MVP"],
     tech: [
       skills.nextjs,
       skills.reactjs,
