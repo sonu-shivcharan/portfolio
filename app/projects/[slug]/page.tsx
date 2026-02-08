@@ -3,6 +3,7 @@ import { getAllSlugs, getMDXBySlug } from "@/lib/mdx";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AnalyticsLink } from "@/components/analytics/AnalyticsLink";
 
 export async function generateStaticParams() {
   return getAllSlugs({ contentDir: "projects" }).map((slug) => ({ slug }));
@@ -51,14 +52,26 @@ export default async function ProjectDetailsPage(props: {
 
       <div className="my-4 space-x-2">
         <Button variant="default" asChild>
-          <a href={frontmatter.live} target="_blank" rel="noreferrer">
+          <AnalyticsLink
+            href={frontmatter.live}
+            target="_blank"
+            rel="noreferrer"
+            action="project_live_demo_click"
+            label={frontmatter.title}
+          >
             View Live Demo
-          </a>
+          </AnalyticsLink>
         </Button>
         <Button variant="outline" asChild>
-          <a href={frontmatter.github} target="_blank" rel="noreferrer">
+          <AnalyticsLink
+            href={frontmatter.github}
+            target="_blank"
+            rel="noreferrer"
+            action="project_github_click"
+            label={frontmatter.title}
+          >
             View GitHub Repo
-          </a>
+          </AnalyticsLink>
         </Button>
       </div>
       <div>
