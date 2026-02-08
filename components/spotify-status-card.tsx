@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import useSWR from "swr";
+import { Card, CardContent } from "@/components/ui/card";
 import { Play, Music } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
 
@@ -23,43 +23,41 @@ type RecentlyPlayed = {
   url: string;
 };
 
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
 export default function SpotifyStatusCard() {
-  const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null);
-  const [recent, setRecent] = useState<RecentlyPlayed | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { data: now, error: nowError } = useSWR<NowPlaying>(
+    "/api/spotify/now-playing",
+    fetcher,
+    {
+      refreshInterval: 5000,
+      revalidateOnFocus: true,
+    },
+  );
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const now = await fetch("/api/spotify/now-playing").then((r) =>
-          r.json()
-        );
+  const { data: recent, error: recentError } = useSWR<RecentlyPlayed>(
+    now?.isPlaying ? null : "/api/spotify/recent",
+    fetcher,
+    {
+      refreshInterval: 15000,
+      revalidateOnFocus: true,
+    },
+  );
 
-        if (now?.isPlaying) {
-          setNowPlaying(now);
-        } else {
-          const last = await fetch("/api/spotify/recent").then((r) => r.json());
-          setRecent(last);
-        }
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const error = nowError || recentError;
+  const loading = !now && !error;
 
-    fetchData();
-  }, []);
+  const nowPlaying = now?.isPlaying ? now : null;
+  const lastPlayed = !now?.isPlaying ? recent : null;
 
   if (error) return null;
+
   if (loading) {
     return (
       <Card className="w-full shadow-sm mx-auto">
         <CardContent>
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-md bg-muted animate-pulse" />
-
             <div className="flex-1 space-y-2">
               <div className="h-3 w-20 rounded bg-muted animate-pulse" />
               <div className="h-4 w-32 rounded bg-muted animate-pulse" />
@@ -70,72 +68,79 @@ export default function SpotifyStatusCard() {
       </Card>
     );
   }
-  if (!nowPlaying && !recent) return null;
+
+  if (!nowPlaying && !lastPlayed) return null;
+
+  const track = nowPlaying ?? lastPlayed;
+  if (!track) {
+    return null;
+  }
   return (
-    <Card className="w-full mx-auto transition-colors py-4">
-      <CardContent className="py-0 px-4">
+    <Card className="w-full mx-auto py-4 transition-colors">
+      <span className="sr-only">
+        {nowPlaying
+          ? `Currently playing ${track.name} by ${track.artists}`
+          : `Last played ${track.name} by ${track.artists}`}
+      </span>
+      <CardContent className="px-5 py-0">
         <a
-          href={nowPlaying?.url || recent?.url}
+          href={track.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 group"
+          className="group flex items-center gap-4"
         >
           <div className="relative">
             <Image
+              src={track.image}
+              alt="Album art"
               width={64}
               height={64}
-              src={nowPlaying?.image || recent?.image || ""}
-              alt="Album art"
-              className="w-18 h-18 rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg"
             />
-            <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              {nowPlaying?.isPlaying ? (
-                <Music className="w-6 h-6 text-white" />
+
+            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+              {nowPlaying ? (
+                <Music className="h-6 w-6 text-white" />
               ) : (
-                <Play className="w-6 h-6 text-white" />
+                <Play className="h-6 w-6 text-white" />
               )}
             </div>
           </div>
 
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1">
+          <div className="min-w-0 flex-1">
+            <div className="mb-1 flex items-center gap-2">
               <span className="relative flex size-2">
-                {nowPlaying?.isPlaying ? (
+                {nowPlaying ? (
                   <>
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex size-2 rounded-full bg-green-500"></span>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-green-500" />
                   </>
                 ) : (
-                  <>
-                    {/* <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span> */}
-                    <span className="relative inline-flex size-2 rounded-full bg-gray-400 dark:bg-gray-700"></span>
-                  </>
+                  <span className="relative inline-flex size-2 rounded-full bg-gray-400 dark:bg-gray-700" />
                 )}
               </span>
 
-              <p className="flex gap-2 items-center text-xs uppercase tracking-wide font-medium text-green-500">
-                {nowPlaying ? "Now Playing" : "Last Played"} on{" "}
-                <SiSpotify className="text-green-500" />
+              <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-green-500">
+                {nowPlaying ? "Now Playing" : "Last Played"} <SiSpotify />
               </p>
             </div>
 
-            <p className="font-semibold text-accent-foreground truncate group-hover:text-green-400 transition-colors">
-              {nowPlaying?.name || recent?.name}
+            <p className="truncate font-semibold transition-colors group-hover:text-green-400">
+              {track.name}
             </p>
 
-            <p className="text-sm text-muted-foreground font-medium truncate">
-              {nowPlaying?.artists || recent?.artists}
+            <p className="truncate text-sm font-medium text-muted-foreground">
+              {track.artists}
             </p>
 
-            {nowPlaying?.isPlaying &&
-              nowPlaying.progressPercent !== undefined && (
-                <div className="mt-3 h-1 w-full bg-zinc-100 dark:bg-zinc-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-green-500 rounded-full transition-all duration-1000"
-                    style={{ width: `${nowPlaying.progressPercent}%` }}
-                  />
-                </div>
-              )}
+            {nowPlaying?.progressPercent !== undefined && (
+              <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-700">
+                <div
+                  className="h-full rounded-full bg-green-500 transition-all duration-1000"
+                  style={{ width: `${nowPlaying.progressPercent}%` }}
+                />
+              </div>
+            )}
           </div>
         </a>
       </CardContent>
