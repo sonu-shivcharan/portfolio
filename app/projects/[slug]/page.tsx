@@ -37,7 +37,7 @@ export default async function ProjectDetailsPage(props: {
     contentDir: "projects",
   });
   const techStack = frontmatter.techStack;
-  console.log("frontmatter", techStack);
+  // console.log("frontmatter", techStack);
   return (
     <article className="prose mx-auto py-10">
       <div className="rounded-lg overflow-hidden mb-4 mx-auto w-full min-h-80 relative">
