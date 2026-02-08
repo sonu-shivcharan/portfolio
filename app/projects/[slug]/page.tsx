@@ -52,26 +52,14 @@ export default async function ProjectDetailsPage(props: {
 
       <div className="my-4 space-x-2">
         <Button variant="default" asChild>
-          <AnalyticsLink
-            href={frontmatter.live}
-            target="_blank"
-            rel="noreferrer"
-            action="project_live_demo_click"
-            label={frontmatter.title}
-          >
+          <a href={frontmatter.live} target="_blank" rel="noreferrer">
             View Live Demo
-          </AnalyticsLink>
+          </a>
         </Button>
         <Button variant="outline" asChild>
-          <AnalyticsLink
-            href={frontmatter.github}
-            target="_blank"
-            rel="noreferrer"
-            action="project_github_click"
-            label={frontmatter.title}
-          >
+          <a href={frontmatter.github} target="_blank" rel="noreferrer">
             View GitHub Repo
-          </AnalyticsLink>
+          </a>
         </Button>
       </div>
       <div>
