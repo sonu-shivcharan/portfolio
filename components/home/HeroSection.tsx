@@ -109,7 +109,7 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
   if (!techStack?.length) return null;
 
   return (
-    <p className="text-muted-foreground md:text-lg ">
+    <p className="text-muted-foreground md:text-lg text-left">
       I build modern and scalable web applications using
       <span className="inline p-1 font-medium text-foreground">
         {techStack.map((tech, index) => {
@@ -120,13 +120,17 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
             <React.Fragment key={label}>
               <span
                 key={tech}
-                className="inline-flex text-sm  items-center px-2 mt-1 gap-1 border mx-1 rounded-xl"
+                className="inline-flex text-sm  items-center px-1 gap-0.5 border rounded "
               >
                 <Icon className={`h-4 w-4 ${className ?? ""}`} />
                 {label}
               </span>
-              {index < techStack.length - 2 && ","}
-              {index === techStack.length - 2 && "and"}
+              {index < techStack.length - 2 && (
+                <span className="text-muted-foreground">, </span>
+              )}
+              {index === techStack.length - 2 && (
+                <span className="text-muted-foreground"> and </span>
+              )}
             </React.Fragment>
           );
         })}
