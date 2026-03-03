@@ -26,7 +26,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Card
       className={cn(
-        "flex flex-col gap-2 justify-between rounded-2xl shadow-xs overflow-clip"
+        "flex flex-col gap-2 justify-between rounded-2xl shadow-xs overflow-clip",
       )}
     >
       <div className="-mt-6">
@@ -91,12 +91,12 @@ export function TechStack({
       <h4
         className={cn(
           "text-sm text-muted-foreground mb-2 font-medium",
-          className
+          className,
         )}
       >
         {title}
       </h4>
-      <div className="space-x-2">
+      <div className="space-x-2 flex flex-wrap items-center gap-y-2">
         {tech.map((t) => (
           <Badge
             key={t.name}
