@@ -6,53 +6,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Play, Music } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
 
-type NowPlaying = {
+type SpotifyStaus = {
   isPlaying: boolean;
   name: string;
   artists: string;
   image: string;
+  url: string;
+  progressMs?: number;
+  durationMs?: number;
   progressPercent?: number;
-  url: string;
-};
-
-type RecentlyPlayed = {
-  name: string;
-  artists: string;
-  image: string;
-  playedAt: string;
-  url: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function SpotifyStatusCard() {
-  const { data: now, error: nowError } = useSWR<NowPlaying>(
-    "/api/spotify/now-playing",
-    fetcher,
-    {
-      refreshInterval: 5000,
-      revalidateOnFocus: true,
-    },
-  );
-
-  const { data: recent, error: recentError } = useSWR<RecentlyPlayed>(
-    now?.isPlaying ? null : "/api/spotify/recent",
-    fetcher,
-    {
-      refreshInterval: 15000,
-      revalidateOnFocus: true,
-    },
-  );
-
-  const error = nowError || recentError;
-  const loading = !now && !error;
-
-  const nowPlaying = now?.isPlaying ? now : null;
-  const lastPlayed = !now?.isPlaying ? recent : null;
-
+  const {
+    data: spotifyStatus,
+    error,
+    isLoading,
+  } = useSWR<SpotifyStaus>("/api/spotify", fetcher, {
+    refreshInterval: 5000,
+    revalidateOnFocus: true,
+  });
+  console.log("spotifyStatus", isLoading);
   if (error) return null;
-
-  if (loading) {
+  if (isLoading) {
     return (
       <Card className="w-full shadow-sm mx-auto">
         <CardContent>
@@ -69,9 +47,10 @@ export default function SpotifyStatusCard() {
     );
   }
 
-  if (!nowPlaying && !lastPlayed) return null;
+  if (!spotifyStatus) return null;
 
-  const track = nowPlaying ?? lastPlayed;
+  const track = spotifyStatus;
+  const nowPlaying = spotifyStatus.isPlaying;
   if (!track) {
     return null;
   }
@@ -133,12 +112,16 @@ export default function SpotifyStatusCard() {
               {track.artists}
             </p>
 
-            {nowPlaying?.progressPercent !== undefined && (
-              <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-700">
+            {spotifyStatus.progressPercent !== undefined && (
+              <div className="mt-3 h-1 w-full  rounded-full bg-accent-foreground/10">
                 <div
-                  className="h-full rounded-full bg-green-500 transition-all duration-1000"
-                  style={{ width: `${nowPlaying.progressPercent}%` }}
-                />
+                  className="h-full rounded-full bg-green-500 transition-all duration-1000 ease-out relative"
+                  style={{
+                    width: `${spotifyStatus.progressPercent}%`,
+                  }}
+                >
+                  <span className="absolute -right-1 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-green-500 shadow-lg" />
+                </div>
               </div>
             )}
           </div>

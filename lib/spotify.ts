@@ -5,7 +5,7 @@ const BASE_URL = "https://api.spotify.com/v1";
 export const TOKEN_COOKIE_NAME = "spotify_token";
 
 const basicAuth = Buffer.from(
-  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
 ).toString("base64");
 
 async function getAccessToken() {
@@ -52,7 +52,12 @@ export async function spotifyFetch(endpoint: string) {
       cache: "no-store",
     });
 
-    return res.json();
+    if (!res.ok || res.statusText !== "OK") {
+      return false;
+    }
+    const data = await res.json();
+
+    return data;
   } catch (error) {
     throw error;
   }
