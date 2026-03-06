@@ -13,15 +13,14 @@ function HeroSection() {
   return (
     <section className="relative">
       <div className="">
-        <div className="space-y-4 flex flex-col md:flex-row gap-4 pt-4 ">
-          <Avatar className="w-28 h-28 my-6 grayscale-100 hover:grayscale-0 duration-200">
-            <AvatarImage
-              src={personalInfo.image}
-              alt="Sonu Shivcharan"
-            ></AvatarImage>
-            <AvatarFallback className="text-4xl font-bold">S</AvatarFallback>
-          </Avatar>
-        </div>
+        <Avatar className="w-28 h-28 my-6 grayscale-100 hover:grayscale-0 duration-200">
+          <AvatarImage
+            src={personalInfo.image}
+            alt="Sonu Shivcharan"
+          ></AvatarImage>
+          <AvatarFallback className="text-4xl font-bold">S</AvatarFallback>
+        </Avatar>
+
         <div className="space-y-2">
           <div className="z-10">
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
@@ -120,7 +119,7 @@ export function TechSentence({ techStack }: { techStack?: TechKey[] }) {
             <React.Fragment key={label}>
               <span
                 key={tech}
-                className="inline-flex text-sm  items-center px-1 gap-0.5 border rounded "
+                className="inline-flex text-sm bg-accent items-center px-1 gap-0.5 border-2 rounded "
               >
                 <Icon className={`h-4 w-4 ${className ?? ""}`} />
                 {label}
