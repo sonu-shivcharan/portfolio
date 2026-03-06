@@ -3,7 +3,6 @@
 import Image from "next/image";
 import useSWR from "swr";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Music } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
 import { AnalyticsLink } from "./analytics/AnalyticsLink";
 
@@ -26,7 +25,7 @@ export default function SpotifyStatusCard() {
     error,
     isLoading,
   } = useSWR<SpotifyStaus>("/api/spotify", fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: (data) => (data?.isPlaying ? 5000 : 0),
     revalidateOnFocus: true,
   });
   if (error) return null;
