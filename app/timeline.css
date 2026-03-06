@@ -1,0 +1,23 @@
+.timeline-dot {
+  /* border: 1px solid red; */
+  position: relative;
+  /* grid-row: 1 / -1; */
+}
+
+.timeline-dot::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: calc(100% + 30px);
+  right: 0;
+  left: 0;
+  top: calc(-14% - 1px);
+  margin: 0 auto;
+  background-color: var(--color-border);
+  border-radius: 5px;
+  /* border: 1px solid red; */
+  z-index: -1;
+}
+.timeline-container:last-child .timeline-dot::before {
+  display: none !important;
+}
