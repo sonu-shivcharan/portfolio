@@ -8,7 +8,7 @@ function ProjectSection() {
   return (
     <section className="space-y-6">
       <h3 className="text-2xl font-bold tracking-tight">Featured Projects</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 border-collapse">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-collapse">
         {projects
           .filter((project) => project.isFeatured)
           .map((project) => (

@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Music } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
+import { AnalyticsLink } from "./analytics/AnalyticsLink";
 
 type SpotifyStaus = {
   isPlaying: boolean;
@@ -28,7 +29,6 @@ export default function SpotifyStatusCard() {
     refreshInterval: 5000,
     revalidateOnFocus: true,
   });
-  console.log("spotifyStatus", isLoading);
   if (error) return null;
   if (isLoading) {
     return (
@@ -62,7 +62,9 @@ export default function SpotifyStatusCard() {
           : `Last played ${track.name} by ${track.artists}`}
       </span>
       <CardContent className="px-5 py-0">
-        <a
+        <AnalyticsLink
+          label={`Song ${track.name}`}
+          action="click_spotify_card"
           href={track.url}
           target="_blank"
           rel="noopener noreferrer"
@@ -76,14 +78,6 @@ export default function SpotifyStatusCard() {
               height={64}
               className="rounded-lg shadow-lg"
             />
-
-            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
-              {nowPlaying ? (
-                <Music className="h-6 w-6 text-white" />
-              ) : (
-                <Play className="h-6 w-6 text-white" />
-              )}
-            </div>
           </div>
 
           <div className="min-w-0 flex-1">
@@ -99,12 +93,12 @@ export default function SpotifyStatusCard() {
                 )}
               </span>
 
-              <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-green-500">
+              <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-green-500">
                 {nowPlaying ? "Now Playing" : "Last Played"} <SiSpotify />
-              </p>
+              </div>
             </div>
 
-            <p className="truncate font-semibold transition-colors group-hover:text-green-400">
+            <p className="truncate text-md font-semibold transition-colors group-hover:text-green-400">
               {track.name}
             </p>
 
@@ -125,7 +119,7 @@ export default function SpotifyStatusCard() {
               </div>
             )}
           </div>
-        </a>
+        </AnalyticsLink>
       </CardContent>
     </Card>
   );

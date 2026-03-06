@@ -74,7 +74,7 @@ export default function RootLayout({
         <Navbar />
 
         <div className="min-h-screen text-foreground">
-          <main className="max-w-3xl mx-auto px-4 space-y-12 relative md:px-4 ">
+          <main className="max-w-3xl mx-auto px-4 space-y-12 relative md:px-6">
             {children}
           </main>
         </div>
