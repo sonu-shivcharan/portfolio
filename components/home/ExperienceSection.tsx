@@ -10,7 +10,7 @@ import { PORTFOLIO_DATA } from "@/data/data";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import "@/app/timeline.css";
-import { TechStack } from "../projects/ProjectCard";
+// import { TechStack } from "../projects/ProjectCard";
 function ExperienceSection() {
   const experience = PORTFOLIO_DATA.experience;
   return (
@@ -40,8 +40,11 @@ function ExperienceSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="mt-0 px-2">
-              {exp.timeline.reverse().map((t) => (
-                <div className="timeline-container" key={exp.company + t.role}>
+              {exp.timeline.reverse().map((t, i) => (
+                <div
+                  className="timeline-container"
+                  key={(exp.company + t.role, +i)}
+                >
                   <div className="timeline-item grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-center">
                     <div className="w-8 mr-2 timeline-dot h-full row-span-2 ">
                       <div className="w-2 h-2 bg-accent-foreground mx-auto rounded-full translate-y-3" />
@@ -62,7 +65,7 @@ function ExperienceSection() {
                       <ul className="space-y-1">
                         {t.achievements.map((line) => (
                           <li
-                            className="text-xs text-muted-foreground"
+                            className="text-xs text-muted-foreground "
                             key={line}
                           >
                             {line}
