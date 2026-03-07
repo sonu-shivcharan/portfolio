@@ -94,16 +94,16 @@ export const PORTFOLIO_DATA = {
             "Led a team of developers, ensuring smooth workflow and maintaining code quality",
           ],
         },
-        {
-          period: "December 2025 - Present",
-          role: "Frontend Developer",
-          type: "Remote",
-          achievements: [
-            "Developed and maintained responsive web applications using React.js",
-            "Converted Figma designs into high-quality, reusable UI components",
-            "Led a team of developers, ensuring smooth workflow and maintaining code quality",
-          ],
-        },
+        // {
+        //   period: "December 2025 - Present",
+        //   role: "Frontend Developer",
+        //   type: "Remote",
+        //   achievements: [
+        //     "Developed and maintained responsive web applications using React.js",
+        //     "Converted Figma designs into high-quality, reusable UI components",
+        //     "Led a team of developers, ensuring smooth workflow and maintaining code quality",
+        //   ],
+        // },
       ],
     },
   ],
