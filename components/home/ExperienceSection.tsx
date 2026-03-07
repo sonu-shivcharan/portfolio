@@ -1,15 +1,15 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { PORTFOLIO_DATA } from "@/data/data";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import "@/app/timeline.css";
+import { ExperienceTimeline } from "./ExperienceTimeline";
+import { ExperienceItem } from "./ExperienceItem";
 // import { TechStack } from "../projects/ProjectCard";
 function ExperienceSection() {
   const experience = PORTFOLIO_DATA.experience;
@@ -40,42 +40,21 @@ function ExperienceSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="mt-0 px-2">
-              {exp.timeline.reverse().map((t, i) => (
-                <div
-                  className="timeline-container"
-                  key={(exp.company + t.role, +i)}
-                >
-                  <div className="timeline-item grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-center">
-                    <div className="w-8 mr-2 timeline-dot h-full row-span-2 ">
-                      <div className="w-2 h-2 bg-accent-foreground mx-auto rounded-full translate-y-3" />
-                    </div>
-                    <div className="role">
-                      {t.role}
-                      <div className="md:hidden flex flex-wrap gap-2 items-center">
-                        <p className="text-xs">{t.period}</p>
-                        <Badge variant={"outline"}>{t.type}</Badge>
-                      </div>
-                    </div>
-                    <div className="md:flex flex-col items-end hidden">
-                      <p className="text-xs">{t.period}</p>
-                      <Badge variant={"outline"}>{t.type}</Badge>
-                    </div>
-
-                    <div className="mt-2 mb-4 md:col-span-2">
-                      <ul className="space-y-1">
-                        {t.achievements.map((line) => (
-                          <li
-                            className="text-xs text-muted-foreground "
-                            key={line}
-                          >
-                            {line}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+              {exp.timeline.length > 1 ? (
+                <ExperienceTimeline
+                  timeline={exp.timeline}
+                  companyName={exp.company.name}
+                />
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center">
+                  <ExperienceItem
+                    role={exp.timeline[0].role}
+                    period={exp.timeline[0].period}
+                    type={exp.timeline[0].type}
+                    achievements={exp.timeline[0].achievements}
+                  />
                 </div>
-              ))}
+              )}
             </CardContent>
           </Card>
         ))}
