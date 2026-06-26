@@ -1,14 +1,8 @@
+import { ExperienceTimeline as TimeLine } from "@/data/data";
 import { ExperienceItem } from "./ExperienceItem";
 
-interface TimelineItem {
-  period: string;
-  role: string;
-  type: string;
-  achievements: string[];
-}
-
 interface ExperienceTimelineProps {
-  timeline: TimelineItem[];
+  timeline: TimeLine[];
   companyName: string;
 }
 
@@ -18,7 +12,7 @@ export function ExperienceTimeline({
 }: ExperienceTimelineProps) {
   return (
     <>
-      {[...timeline].reverse().map((t, i) => (
+      {timeline.map((t, i) => (
         <div className="timeline-container" key={(companyName + t.role, +i)}>
           <div className="timeline-item grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] items-center">
             <div className="w-8 mr-2 timeline-dot h-full row-span-2 ">
@@ -28,7 +22,7 @@ export function ExperienceTimeline({
               role={t.role}
               period={t.period}
               type={t.type}
-              achievements={t.achievements}
+              achievements={t.achievements || []}
             />
           </div>
         </div>

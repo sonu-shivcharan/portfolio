@@ -1,15 +1,10 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { PORTFOLIO_DATA } from "@/data/data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ExperienceTimeline as Timeline, PORTFOLIO_DATA } from "@/data/data";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
-import "@/app/timeline.css";
-import { ExperienceTimeline } from "./ExperienceTimeline";
+
 import { ExperienceItem } from "./ExperienceItem";
+import { ExperienceTimeline } from "./ExperienceTimeline";
 // import { TechStack } from "../projects/ProjectCard";
 function ExperienceSection() {
   const experience = PORTFOLIO_DATA.experience;
@@ -33,28 +28,19 @@ function ExperienceSection() {
                 {exp.company.links?.map((link) => {
                   return (
                     <Link href={link.url} target="_blank" key={link.url}>
-                      <link.icon className="h-4 w-4 ml-2 text-muted-foreground" />
+                      {link.icon && (
+                        <link.icon className="h-4 w-4 ml-2 text-muted-foreground" />
+                      )}
                     </Link>
                   );
                 })}
               </CardTitle>
             </CardHeader>
-            <CardContent className="mt-0 px-2">
-              {exp.timeline.length > 1 ? (
-                <ExperienceTimeline
-                  timeline={exp.timeline}
-                  companyName={exp.company.name}
-                />
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center">
-                  <ExperienceItem
-                    role={exp.timeline[0].role}
-                    period={exp.timeline[0].period}
-                    type={exp.timeline[0].type}
-                    achievements={exp.timeline[0].achievements}
-                  />
-                </div>
-              )}
+            <CardContent className="mt-0 px-0">
+              <ExperienceDetails
+                timeline={exp.timeline}
+                companyName={exp.company.name}
+              />
             </CardContent>
           </Card>
         ))}
@@ -64,6 +50,27 @@ function ExperienceSection() {
 }
 
 export default ExperienceSection;
+
+type ExperienceDetailsProps = {
+  timeline: Timeline[];
+  companyName: string;
+};
+function ExperienceDetails({ timeline, companyName }: ExperienceDetailsProps) {
+  if (timeline.length > 1) {
+    return <ExperienceTimeline timeline={timeline} companyName={companyName} />;
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center">
+      <ExperienceItem
+        role={timeline[0].role}
+        period={timeline[0].period}
+        type={timeline[0].type}
+        achievements={timeline[0].achievements}
+      />
+    </div>
+  );
+}
 
 /*
   | role               timeline

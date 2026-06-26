@@ -1,7 +1,85 @@
 import { skills } from "@/lib/skills";
 import { icons } from "@/lib/icons";
 
-export const PORTFOLIO_DATA = {
+export type ExperienceTimeline = {
+  period: string;
+  role: string;
+  type: string;
+  achievements?: string[];
+};
+
+type ExperienceCompanyLink = {
+  icon: (typeof icons)[keyof typeof icons];
+  url: string;
+};
+
+type ExperienceCompany = {
+  name: string;
+  location?: string;
+  links: ExperienceCompanyLink[];
+  tech: Array<(typeof skills)[keyof typeof skills]>;
+  logo: string;
+};
+
+export type ExperienceItem = {
+  company: ExperienceCompany;
+  role?: string;
+  period?: string;
+  type?: string;
+  achievements?: string[];
+  timeline: ExperienceTimeline[];
+};
+
+type ContactLink = {
+  name: string;
+  link: string;
+  icon: (typeof icons)[keyof typeof icons];
+};
+
+type PersonalInfo = {
+  name: string;
+  role: string;
+  image: string;
+  contact: ContactLink[];
+  resume: string;
+  cal: string;
+  location: string;
+  summary: string;
+  aboutSummary: string;
+};
+
+type ProjectLinks = {
+  source: string | null;
+  viewLive: string | null;
+};
+
+type ProjectItem = {
+  title: string;
+  subtitle: string;
+  tech: Array<(typeof skills)[keyof typeof skills]>;
+  period: string;
+  isFeatured: boolean;
+  description: string;
+  points: string[];
+  links: ProjectLinks;
+};
+
+type EducationItem = {
+  institution: string;
+  degree: string;
+  period: string;
+  location: string;
+};
+
+export type PortfolioData = {
+  personalInfo: PersonalInfo;
+  skills: Array<(typeof skills)[keyof typeof skills]>;
+  experience: ExperienceItem[];
+  projects: ProjectItem[];
+  education: EducationItem[];
+};
+
+export const PORTFOLIO_DATA: PortfolioData = {
   personalInfo: {
     name: "Sonu Shivcharan",
     role: "Full-Stack Web Developer",
@@ -30,7 +108,7 @@ export const PORTFOLIO_DATA = {
     ],
     resume: "/resume/sonu-shivcharan-resume.pdf",
     cal: "https://cal.com/sonu-shivcharan/30min",
-    location: "Pune, Maharashtra, India",
+    location: "Chennai, Tamil Nadu, India",
     summary:
       "I build modern, fast, and scalable web applications using Next.js, React.js, TypeScript, Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
     aboutSummary: "",
@@ -55,6 +133,36 @@ export const PORTFOLIO_DATA = {
   experience: [
     {
       company: {
+        name: "LTM (FKA LTI Mindtree)",
+        links: [
+          {
+            icon: icons.website,
+            url: "https://www.ltm.com/",
+          },
+          {
+            icon: icons.linkedin,
+            url: "https://www.linkedin.com/company/ltm-larsenandtoubrocompany",
+          },
+        ],
+        tech: [
+          skills.nextjs,
+          skills.reactjs,
+          skills.tailwindcss,
+          skills.firebase,
+        ],
+        logo: "/logos/ltm-logo.jpg",
+      },
+
+      timeline: [
+        {
+          period: "Jun 2026 - Present ",
+          role: "Associate Trainee",
+          type: "On-site",
+        },
+      ],
+    },
+    {
+      company: {
         name: "Alaska App Studios, Pvt. Ltd.",
         location: "Pune, India",
         links: [
@@ -76,7 +184,7 @@ export const PORTFOLIO_DATA = {
         logo: "/logos/alaska-logo.png",
       },
       role: "Web Development Intern",
-      period: "February 2025 - May 2025",
+      period: "Feb 2025 - May 2025",
       type: "Remote",
       achievements: [
         "Developed and maintained responsive web applications using React.js", //
@@ -94,19 +202,10 @@ export const PORTFOLIO_DATA = {
             "Led a team of developers, ensuring smooth workflow and maintaining code quality",
           ],
         },
-        // {
-        //   period: "December 2025 - Present",
-        //   role: "Frontend Developer",
-        //   type: "Remote",
-        //   achievements: [
-        //     "Developed and maintained responsive web applications using React.js",
-        //     "Converted Figma designs into high-quality, reusable UI components",
-        //     "Led a team of developers, ensuring smooth workflow and maintaining code quality",
-        //   ],
-        // },
       ],
     },
   ],
+
   projects: [
     {
       title: "Tiffinz",
