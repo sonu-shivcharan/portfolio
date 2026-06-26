@@ -1,5 +1,6 @@
 import { skills } from "@/lib/skills";
 import { icons } from "@/lib/icons";
+import { Skill } from "./projects/projects";
 
 export type ExperienceTimeline = {
   period: string;
@@ -73,7 +74,7 @@ type EducationItem = {
 
 export type PortfolioData = {
   personalInfo: PersonalInfo;
-  skills: Array<(typeof skills)[keyof typeof skills]>;
+  skills: Skill[];
   experience: ExperienceItem[];
   projects: ProjectItem[];
   education: EducationItem[];
