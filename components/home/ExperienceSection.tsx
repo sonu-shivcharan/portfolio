@@ -13,11 +13,8 @@ function ExperienceSection() {
       <h3 className="text-2xl font-bold tracking-tight">Experience</h3>
       <div className="space-y-2">
         {experience.map((exp, idx) => (
-          <Card
-            key={idx}
-            className="inset-1 bg-transparent border-none shadow-none p-0 px-0 mx-0 gap-2 "
-          >
-            <CardHeader className="px-2 py-0 mb-0 pb-0 grid grid-cols-[auto_1fr] items-center gap-2">
+          <Card key={idx} className="border-none shadow p-2 px-0 mx-0 gap-2 ">
+            <CardHeader className=" py-1 px-4 mb-0 pb-0 grid grid-cols-[auto_1fr] items-center gap-2">
               <Avatar className="rounded-lg shadow">
                 <AvatarImage src={exp.company.logo}></AvatarImage>
               </Avatar>
@@ -36,7 +33,7 @@ function ExperienceSection() {
                 })}
               </CardTitle>
             </CardHeader>
-            <CardContent className="mt-0 px-0">
+            <CardContent className="mt-0 mb-0  px-2">
               <ExperienceDetails
                 timeline={exp.timeline}
                 companyName={exp.company.name}
