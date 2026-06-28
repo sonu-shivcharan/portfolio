@@ -9,7 +9,7 @@ function MainPage() {
   return (
     <>
       <HeroSection />
-      <SpotifyStatusCard />
+      {/* <SpotifyStatusCard /> */}
       <ExperienceSection />
       <ProjectSection />
       <GithubActivity />
