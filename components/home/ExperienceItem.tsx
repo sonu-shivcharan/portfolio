@@ -18,9 +18,12 @@ export function ExperienceItem({
       </div>
 
       <div className="mb-2 col-span-2">
-        <ul className="space-y-1">
+        <ul className="space-y-1  mt-2">
           {achievements?.map((line) => (
-            <li className="text-xs text-muted-foreground " key={line}>
+            <li
+              className="text-xs ml-4 list-disc text-muted-foreground "
+              key={line}
+            >
               {line}
             </li>
           ))}

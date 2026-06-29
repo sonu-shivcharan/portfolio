@@ -134,7 +134,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   experience: [
     {
       company: {
-        name: "LTM (FKA LTI Mindtree)",
+        name: "LTM (LTI Mindtree)",
         links: [
           {
             icon: icons.website,
