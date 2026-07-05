@@ -18,7 +18,7 @@ function HeroSection() {
             src={personalInfo.image}
             alt="Sonu Shivcharan"
           ></AvatarImage>
-          <AvatarFallback className="text-4xl font-bold">S</AvatarFallback>
+          <AvatarFallback className="text-4xl font-semibold">S</AvatarFallback>
         </Avatar>
 
         <div className="space-y-2">
@@ -58,7 +58,7 @@ function HeroSection() {
             label="Meeting on Cal"
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3"
           >
-            <Calendar className="mr-2" />
+            <Calendar className="mr" />
             Schedule a Call
           </AnalyticsLink>
         </div>

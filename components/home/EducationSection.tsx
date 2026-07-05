@@ -5,7 +5,7 @@ function EducationSection() {
   const education = PORTFOLIO_DATA.education;
   return (
     <section>
-      <h3 className="text-2xl font-medium tracking-tight">Education</h3>
+      <h3 className="text-2xl font-semibold tracking-tight">Education</h3>
       <div className="grid gap-4">
         {education.map((edu, idx) => (
           <Card key={idx} className="border py-4 mt-4 px-2 bg-transparent">

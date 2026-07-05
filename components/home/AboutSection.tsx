@@ -16,7 +16,7 @@ function AboutSection() {
 
   return (
     <section>
-      <h2 className="text-2xl font-bold tracking-tight py-4">About</h2>
+      <h2 className="text-2xl font-semibold tracking-tight py-4">About</h2>
 
       <Card className="gap-2">
         <CardHeader>
@@ -26,7 +26,9 @@ function AboutSection() {
                 src={personalInfo.image}
                 alt={personalInfo.name}
               ></AvatarImage>
-              <AvatarFallback className="text-4xl font-bold">S</AvatarFallback>
+              <AvatarFallback className="text-4xl font-semibol">
+                S
+              </AvatarFallback>
             </Avatar>
             <div className="">
               <AnalyticsLink

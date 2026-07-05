@@ -10,7 +10,7 @@ export const mdxComponents: MDXComponents = {
       {children}
     </Link>
   ),
-  h1: (props) => <h1 className="text-3xl font-bold mb-4" {...props} />,
+  h1: (props) => <h1 className="text-3xl font-semibold mb-4" {...props} />,
   h2: (props) => (
     <h2
       className="text-2xl font-semibold mt-10 mb-4 border-b pb-2"
