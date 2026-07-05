@@ -55,14 +55,14 @@ export const projects: Project[] = [
       skills.rag,
       skills.gemini,
     ],
-    period: "September 2025 - October 2025",
+    period: "September 2025 - Mar 2026",
     isFeatured: true,
     description:
-      "AI chatbot prototype helping farmers receive instant support via text, voice, and image queries using Gemini LLM.",
+      "An AI-powered agricultural agent that assists farmers with real-time, personalized guidance on crops, soil health, weather conditions, pest management, and government schemes to enable better decision-making and improved productivity",
     img: "/projects/krishi-sahayak.png",
     links: {
-      source: "https://github.com/sonu-shivcharan/krishi-sahayak",
-      viewLive: "https://ai-farmer-mu.vercel.app",
+      source: "https://github.com/sonu-shivcharan/krishi-sahayak-backend-v2",
+      viewLive: null,
     },
   },
   {
