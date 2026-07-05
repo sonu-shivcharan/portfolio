@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { PORTFOLIO_DATA } from "@/data/data";
-import { icons } from "@/lib/icons";
 
 function EducationSection() {
   const education = PORTFOLIO_DATA.education;
