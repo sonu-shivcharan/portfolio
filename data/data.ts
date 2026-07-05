@@ -151,14 +151,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
           skills.tailwindcss,
           skills.firebase,
         ],
-        logo: "/logos/ltm-logo.jpg",
+        logo: "/logos/ltm-logo.png",
       },
 
       timeline: [
         {
           period: "Jun 2026 - Present ",
           role: "Associate Trainee",
-          type: "On-site",
+          type: "Chennai, Tamil Nadu",
         },
       ],
     },

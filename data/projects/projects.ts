@@ -47,7 +47,7 @@ export const projects: Project[] = [
   {
     title: "Krishi Sahayak",
     subtitle: "AI-Powered Farmer Support",
-    status: ["building", "Building MVP"],
+    status: ["not working", "free tier exhuasted"],
     tech: [
       skills.nextjs,
       skills.reactjs,
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       skills.gemini,
       skills.redux,
     ],
-    status: ["working", "All Systems Operational"],
+    status: ["not working", "Deperecated"],
     period: "April 2025 - May 2025",
     isFeatured: true,
     description:
@@ -102,18 +102,18 @@ export const projects: Project[] = [
       viewLive: "https://templatz.vercel.app/",
     },
   },
-  {
-    title: "Blog App",
-    subtitle: "Blogging Web App",
-    tech: [skills.reactjs, skills.tailwindcss, skills.appwrite, skills.redux],
-    status: ["working", "All Systems Operational"],
-    period: "April 2025 - May 2025",
-    isFeatured: false,
-    description: "Blog App ",
-    img: "/projects/vidz-backend.png",
-    links: {
-      source: "https://github.com/sonu-shivcharan/react-blog-app",
-      viewLive: "https://x-blog-app.vercel.app/",
-    },
-  },
+  // {
+  //   title: "Blog App",
+  //   subtitle: "Blogging Web App",
+  //   tech: [skills.reactjs, skills.tailwindcss, skills.appwrite, skills.redux],
+  //   status: ["working", "All Systems Operational"],
+  //   period: "April 2025 - May 2025",
+  //   isFeatured: false,
+  //   description: "Blog App ",
+  //   img: "/projects/vidz-backend.png",
+  //   links: {
+  //     source: "https://github.com/sonu-shivcharan/react-blog-app",
+  //     viewLive: "https://x-blog-app.vercel.app/",
+  //   },
+  // },
 ];
