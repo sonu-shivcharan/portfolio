@@ -140,7 +140,7 @@ export function ProjectStatusBadge({
   return (
     <Badge
       variant="outline"
-      className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_STYLES[type]}`}
+      className={`rounded-full px-3 py-1 md:text-[10px] text-[8px] font-medium ${STATUS_STYLES[type]}`}
     >
       {label}
     </Badge>
