@@ -12,9 +12,11 @@ export function ExperienceItem({
   return (
     <div className="px-2 md:px-4 grid grid-cols-1 md:grid-cols-[1fr_auto] items-center">
       <div className="role col-span-2  md:col-span-1">{role}</div>
-      <div className="flex items-center gap-2 md:flex-col md:items-end col-span-2 md:col-span-1">
+      <div className="flex items-center justify-between gap-2 md:flex-col md:items-end col-span-2 md:col-span-1">
         <p className="text-xs text-muted-foreground">{period}</p>
-        <Badge variant={"outline"}>{type}</Badge>
+        <Badge variant={"outline"} className="-translate-y-3 md:translate-y-0">
+          {type}
+        </Badge>
       </div>
 
       <div className="mb-2 col-span-2">

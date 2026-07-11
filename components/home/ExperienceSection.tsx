@@ -14,23 +14,24 @@ function ExperienceSection() {
       <div className="space-y-4">
         {experience.map((exp, idx) => (
           <Card key={idx} className="shadow-xs px-1 pt-4 pb-2 mx-0 gap-2 ">
-            <CardHeader className="px-4 mb-0 grid grid-cols-[auto_1fr] items-center gap-2">
+            <CardHeader className="px-2.5 mb-0 grid grid-cols-[auto_1fr] items-center gap-2">
               <Avatar className="rounded-lg shadow">
                 <AvatarImage src={exp.company.logo}></AvatarImage>
               </Avatar>
 
-              <CardTitle className="text-[16px] flex flex-wrap items-center">
+              <CardTitle className="text-sm  flex flex-wrap justify-between items-center">
                 {exp.company.name}
-
-                {exp.company.links?.map((link) => {
-                  return (
-                    <Link href={link.url} target="_blank" key={link.url}>
-                      {link.icon && (
-                        <link.icon className="h-4 w-4 ml-2 text-muted-foreground" />
-                      )}
-                    </Link>
-                  );
-                })}
+                <div className="flex">
+                  {exp.company.links?.map((link) => {
+                    return (
+                      <Link href={link.url} target="_blank" key={link.url}>
+                        {link.icon && (
+                          <link.icon className="h-4 w-4 ml-2 text-muted-foreground" />
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="mt-0 mb-0 px-1">
