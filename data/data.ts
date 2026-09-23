@@ -109,7 +109,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     ],
     resume: "/resume/sonu-shivcharan-resume.pdf",
     cal: "https://cal.com/sonu-shivcharan/30min",
-    location: "Pune, Maharashtra, India",
+    location: "Chennai, Tamil Nadu, India",
     summary:
       "I build modern, fast, and scalable web applications using Next.js, React.js, TypeScript, Node.js and MongoDB. I craft smooth user experiences, build reliable APIs, and explore AI integrations. Actively learning advanced backend concepts",
     aboutSummary: "",
