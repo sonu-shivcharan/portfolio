@@ -13,7 +13,10 @@ function ExperienceSection() {
       <h3 className="text-2xl font-semibold tracking-tight">Experience</h3>
       <div className="space-y-4">
         {experience.map((exp, idx) => (
-          <Card key={idx} className="shadow-xs px-1 pt-4 pb-2 mx-0 gap-2 ">
+          <Card
+            key={idx}
+            className="shadow-xs px-1 pt-4 pb-2 mx-0 gap-2 bg-transparent"
+          >
             <CardHeader className="px-2.5 mb-0 grid grid-cols-[auto_1fr] items-center gap-2">
               <Avatar className="rounded-lg shadow">
                 <AvatarImage src={exp.company.logo}></AvatarImage>

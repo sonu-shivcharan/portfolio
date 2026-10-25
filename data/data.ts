@@ -18,7 +18,7 @@ type ExperienceCompany = {
   name: string;
   location?: string;
   links: ExperienceCompanyLink[];
-  tech: Array<(typeof skills)[keyof typeof skills]>;
+  tech?: Array<(typeof skills)[keyof typeof skills]>;
   logo: string;
 };
 
@@ -80,6 +80,72 @@ export type PortfolioData = {
   education: EducationItem[];
 };
 
+export const EXPERIENCE_ITEMS: ExperienceItem[] = [
+  {
+    company: {
+      name: "LTM (LTI Mindtree)",
+      links: [
+        {
+          icon: icons.website,
+          url: "https://www.ltm.com/",
+        },
+        {
+          icon: icons.linkedin,
+          url: "https://www.linkedin.com/company/ltm-larsenandtoubrocompany",
+        },
+      ],
+      logo: "/logos/ltm-logo.png",
+    },
+    timeline: [
+      {
+        period: "Sep 2026 - Present ",
+        role: "Software Engineer",
+        type: "Chennai, TN",
+      },
+      {
+        period: "Jun 2026 - Sep 2026 ",
+        role: "Associate Trainee",
+        type: "Chennai, TN",
+      },
+    ],
+  },
+  {
+    company: {
+      name: "Alaska App Studios, Pvt. Ltd.",
+      location: "Pune, India",
+      links: [
+        {
+          icon: icons.website,
+          url: "https://highwayguard.alaskaa.in/",
+        },
+        {
+          icon: icons.linkedin,
+          url: "https://www.linkedin.com/company/alaska-app-studios-pvt-ltd",
+        },
+      ],
+      tech: [
+        skills.nextjs,
+        skills.reactjs,
+        skills.tailwindcss,
+        skills.firebase,
+      ],
+      logo: "/logos/alaska-logo.png",
+    },
+    timeline: [
+      {
+        period: "February 2025 - May 2025",
+        role: "Web Development Intern",
+        type: "Remote",
+        achievements: [
+          "Developed and maintained responsive web applications using React.js",
+          "Converted Figma designs into high-quality, reusable UI components",
+          "Led a team of developers, ensuring smooth workflow and maintaining code quality",
+        ],
+      },
+    ],
+  },
+];
+
 export const PORTFOLIO_DATA: PortfolioData = {
   personalInfo: {
     name: "Sonu Shivcharan",
@@ -88,7 +154,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     contact: [
       {
         name: "Email",
-        link: "mailto:sonushivcharan@outlook.com",
+        link: "mailto:sonushivcharan.dev@gmail.com",
         icon: icons.envelope,
       },
       {
@@ -131,81 +197,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     skills.docker,
     skills.postman,
   ],
-  experience: [
-    {
-      company: {
-        name: "LTM (LTI Mindtree)",
-        links: [
-          {
-            icon: icons.website,
-            url: "https://www.ltm.com/",
-          },
-          {
-            icon: icons.linkedin,
-            url: "https://www.linkedin.com/company/ltm-larsenandtoubrocompany",
-          },
-        ],
-        tech: [
-          skills.nextjs,
-          skills.reactjs,
-          skills.tailwindcss,
-          skills.firebase,
-        ],
-        logo: "/logos/ltm-logo.png",
-      },
-
-      timeline: [
-        {
-          period: "Jun 2026 - Present ",
-          role: "Associate Trainee",
-          type: "Chennai, Tamil Nadu",
-        },
-      ],
-    },
-    {
-      company: {
-        name: "Alaska App Studios, Pvt. Ltd.",
-        location: "Pune, India",
-        links: [
-          {
-            icon: icons.website,
-            url: "https://highwayguard.alaskaa.in/",
-          },
-          {
-            icon: icons.linkedin,
-            url: "https://www.linkedin.com/company/alaska-app-studios-pvt-ltd",
-          },
-        ],
-        tech: [
-          skills.nextjs,
-          skills.reactjs,
-          skills.tailwindcss,
-          skills.firebase,
-        ],
-        logo: "/logos/alaska-logo.png",
-      },
-      role: "Web Development Intern",
-      period: "Feb 2025 - May 2025",
-      type: "Remote",
-      achievements: [
-        "Developed and maintained responsive web applications using React.js", //
-        "Converted Figma designs into high-quality, reusable UI components", //
-        "Led a team of developers, ensuring smooth workflow and maintaining code quality", //
-      ],
-      timeline: [
-        {
-          period: "February 2025 - May 2025",
-          role: "Web Development Intern",
-          type: "Remote",
-          achievements: [
-            "Developed and maintained responsive web applications using React.js",
-            "Converted Figma designs into high-quality, reusable UI components",
-            "Led a team of developers, ensuring smooth workflow and maintaining code quality",
-          ],
-        },
-      ],
-    },
-  ],
+  experience: EXPERIENCE_ITEMS,
 
   projects: [
     {
