@@ -54,13 +54,13 @@ export default function SpotifyStatusCard() {
     return null;
   }
   return (
-    <Card className="w-full blur-in mx-auto transition-colors py-2 md:py-4">
+    <Card className="w-full mx-auto py-4 transition-colors">
       <span className="sr-only">
         {nowPlaying
-          ? `Currently playing ${track.name} by ${track.artists} on spotify`
-          : `Last played ${track.name} by ${track.artists} on spotify`}
+          ? `Currently playing ${track.name} by ${track.artists}`
+          : `Last played ${track.name} by ${track.artists}`}
       </span>
-      <CardContent className="px-3">
+      <CardContent className="px-5 py-0">
         <AnalyticsLink
           label={`Song ${track.name}`}
           action="click_spotify_card"
